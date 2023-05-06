@@ -24,3 +24,6 @@ run-project project_path:
 
 dotnet *args="--help":
     dotnet {{args}}
+
+test path="./test":
+    dotnet test {{path}}
