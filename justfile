@@ -1,7 +1,7 @@
 alias ces := create-empty-solution
 alias inp := initialize-new-project
 alias anp := add-new-project
-alias rp := run-project
+alias run := run-project
 alias d := dotnet
 
 default:
