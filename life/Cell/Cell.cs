@@ -59,6 +59,35 @@ namespace Life
 			return new Cell(this.position, this.state);
 		}
 
+		// TODO: make it better.
+		// override object.Equals
+		public override bool Equals(object obj)
+		{
+			if (obj == null || GetType() != obj.GetType())
+			{
+				return false;
+			}
+
+			Cell cell = (Cell)obj;
+
+			if (cell.GetPosition().X() != this.position.X() || cell.GetPosition().Y() != this.position.Y())
+			{
+				return false;
+			}
+
+			if (cell.GetState() != this.state)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public override int GetHashCode()
+		{
+			throw new NotImplementedException();
+		}
+
 		/// TODO
 		private bool shouldLive(int neighborsAmount)
 		{
