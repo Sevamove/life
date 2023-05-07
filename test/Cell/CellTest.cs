@@ -70,8 +70,8 @@ public class CellTest
 
 		// Assert.
 
-		Assert.Equal(liveCellActualPosition, liveCellExpectedPosition);
-		Assert.Equal(deadCellActualPosition, deadCellExpectedPosition);
+		Assert.True(liveCellActualPosition.Equals(liveCellExpectedPosition));
+		Assert.True(deadCellActualPosition.Equals(deadCellExpectedPosition));
 	}
 
 	[Fact]

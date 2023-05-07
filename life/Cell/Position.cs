@@ -45,6 +45,32 @@ namespace Life
 			return this.y;
 		}
 
+		// override object.Equals
+		public override bool Equals(object obj)
+		{
+			if (obj == null || GetType() != obj.GetType())
+			{
+				return false;
+			}
+
+			Position position = (Position)obj;
+
+			if (position.X() != this.x || position.Y() != this.y)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		// override object.GetHashCode
+		public override int GetHashCode()
+		{
+			// TODO: write your implementation of GetHashCode() here
+			throw new System.NotImplementedException();
+			return base.GetHashCode();
+		}
+
 		private static Position up(Position position)
 		{
 			return new Position(position.X() - 1, position.Y());
