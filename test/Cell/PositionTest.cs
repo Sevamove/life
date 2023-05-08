@@ -18,7 +18,7 @@ public class PositionTest
 
 		// Act.
 
-		var actualLength = Position.GetSurroundedCells(this.position).Length;
+		var actualLength = this.position.GetSurroundedCells().Length;
 
 		// Assert.
 
@@ -66,7 +66,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualUp = Position.GetSurroundedCells(this.position)[0];
+		Position actualUp = position.GetSurroundedCells()[0];
 
 		// Assert.
 
@@ -83,7 +83,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualDown = Position.GetSurroundedCells(this.position)[1];
+		Position actualDown = position.GetSurroundedCells()[1];
 
 		// Assert.
 
@@ -100,7 +100,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualLeft = Position.GetSurroundedCells(this.position)[2];
+		Position actualLeft = position.GetSurroundedCells()[2];
 
 		// Assert.
 
@@ -117,7 +117,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualRight = Position.GetSurroundedCells(this.position)[3];
+		Position actualRight = position.GetSurroundedCells()[3];
 
 		// Assert.
 
@@ -134,7 +134,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualUpLeft = Position.GetSurroundedCells(this.position)[4];
+		Position actualUpLeft = position.GetSurroundedCells()[4];
 
 		// Assert.
 
@@ -151,7 +151,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualUpRight = Position.GetSurroundedCells(this.position)[5];
+		Position actualUpRight = position.GetSurroundedCells()[5];
 
 		// Assert.
 
@@ -168,7 +168,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualDownLeft = Position.GetSurroundedCells(this.position)[6];
+		Position actualDownLeft = position.GetSurroundedCells()[6];
 
 		// Assert.
 
@@ -185,7 +185,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualDownRight = Position.GetSurroundedCells(this.position)[7];
+		Position actualDownRight = position.GetSurroundedCells()[7];
 
 		// Assert.
 

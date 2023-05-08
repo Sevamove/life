@@ -2,7 +2,7 @@ namespace Life
 {
 	public interface IPosition
 	{
-		public static abstract Position[] GetSurroundedCells(Position position);
+		public Position[] GetSurroundedCells();
 		public int X();
 		public int Y();
 	}
@@ -19,18 +19,18 @@ namespace Life
 			this.y = y;
 		}
 
-		public static Position[] GetSurroundedCells(Position position)
+		public Position[] GetSurroundedCells()
 		{
 			Position[] positions = new Position[SURROUNDED_POSITIONS_AMOUNT];
 
-			positions[0] = up(position);
-			positions[1] = down(position);
-			positions[2] = left(position);
-			positions[3] = right(position);
-			positions[4] = upLeft(position);
-			positions[5] = upRight(position);
-			positions[6] = downLeft(position);
-			positions[7] = downRight(position);
+			positions[0] = up();
+			positions[1] = down();
+			positions[2] = left();
+			positions[3] = right();
+			positions[4] = upLeft();
+			positions[5] = upRight();
+			positions[6] = downLeft();
+			positions[7] = downRight();
 
 			return positions;
 		}
@@ -55,7 +55,7 @@ namespace Life
 
 			Position position = (Position)obj;
 
-			if (position.X() != this.x || position.Y() != this.y)
+			if (this.x != this.x || this.y != this.y)
 			{
 				return false;
 			}
@@ -71,44 +71,44 @@ namespace Life
 			return base.GetHashCode();
 		}
 
-		private static Position up(Position position)
+		private Position up()
 		{
-			return new Position(position.X() - 1, position.Y());
+			return new Position(this.x - 1, this.y);
 		}
 
-		private static Position down(Position position)
+		private Position down()
 		{
-			return new Position(position.X() + 1, position.Y());
+			return new Position(this.x + 1, this.y);
 		}
 
-		private static Position left(Position position)
+		private Position left()
 		{
-			return new Position(position.X(), position.Y() - 1);
+			return new Position(this.x, this.y - 1);
 		}
 
-		private static Position right(Position position)
+		private Position right()
 		{
-			return new Position(position.X(), position.Y() + 1);
+			return new Position(this.x, this.y + 1);
 		}
 
-		private static Position upLeft(Position position)
+		private Position upLeft()
 		{
-			return new Position(position.X() - 1, position.Y() - 1);
+			return new Position(this.x - 1, this.y - 1);
 		}
 
-		private static Position upRight(Position position)
+		private Position upRight()
 		{
-			return new Position(position.X() - 1, position.Y() + 1);
+			return new Position(this.x - 1, this.y + 1);
 		}
 
-		private static Position downLeft(Position position)
+		private Position downLeft()
 		{
-			return new Position(position.X() + 1, position.Y() - 1);
+			return new Position(this.x + 1, this.y - 1);
 		}
 
-		private static Position downRight(Position position)
+		private Position downRight()
 		{
-			return new Position(position.X() + 1, position.Y() + 1);
+			return new Position(this.x + 1, this.y + 1);
 		}
 	}
 }

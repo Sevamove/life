@@ -91,7 +91,7 @@ namespace Life
 		private int getNeighborsAmount(Position position)
 		{
 			int result = 0;
-			Position[] positions = Position.GetSurroundedCells(position);
+			Position[] positions = position.GetSurroundedCells();
 
 			for (int i = 0; i < positions.Length; i++)
 			{
