@@ -2,6 +2,8 @@ namespace Life
 {
 	public interface IPosition
 	{
+		// Read methods.
+
 		public Position[] GetSurroundedCells();
 		public int X();
 		public int Y();
@@ -55,7 +57,7 @@ namespace Life
 
 			Position position = (Position)obj;
 
-			if (this.x != this.x || this.y != this.y)
+			if (position.X() != this.x || position.Y() != this.y)
 			{
 				return false;
 			}
