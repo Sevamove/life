@@ -1,4 +1,3 @@
-namespace Life
-{
-	public record Area(int Width, int Height) { }
-}
+namespace Life.GridArea;
+
+public record Area(int Width, int Height) { }

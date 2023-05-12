@@ -1,133 +1,135 @@
-namespace Life
+using Life.CellPosition;
+using Life.CellState;
+
+namespace Life;
+
+/// TODO
+public interface ICell : ICloneable
+{
+	/// <summary>Set `state` for cell.</summary>
+	/// <param name="neighborsAmount">Amount of neighbors of cell.</param>
+	public void SetState(int neighborsAmount);
+	// TODO
+	public Position GetPosition();
+	// TODO
+	public State GetState();
+}
+
+/// TODO
+public class Cell : ICell
 {
 	/// TODO
-	public interface ICell : ICloneable
+	private Position position;
+	/// TODO
+	private State state;
+
+	/// TODO
+	public Cell(Position position, State state)
 	{
-		/// <summary>Set `state` for cell.</summary>
-		/// <param name="neighborsAmount">Amount of neighbors of cell.</param>
-		public void SetState(int neighborsAmount);
-		// TODO
-		public Position GetPosition();
-		// TODO
-		public State GetState();
+		this.position = position;
+		this.state = state;
+	}
+
+	/// <inheritdoc /> 
+	public void SetState(int neighborsAmount)
+	{
+		if (this.shouldLive(neighborsAmount) || this.shouldBorn(neighborsAmount))
+		{
+			this.state = State.LIVE;
+		}
+
+		if (this.shouldDie(neighborsAmount))
+		{
+			this.state = State.DEAD;
+		}
+	}
+
+	/// <inheritdoc /> 
+	public Position GetPosition()
+	{
+		return this.position;
+	}
+
+	/// <inheritdoc /> 
+	public State GetState()
+	{
+		return this.state;
+	}
+
+	/// <inheritdoc /> 
+	public object Clone()
+	{
+		return new Cell(this.position, this.state);
+	}
+
+	// TODO: make it better.
+	// override object.Equals
+	public override bool Equals(object obj)
+	{
+		if (obj == null || GetType() != obj.GetType())
+		{
+			return false;
+		}
+
+		Cell cell = (Cell)obj;
+
+		if (cell.GetPosition().X() != this.position.X() || cell.GetPosition().Y() != this.position.Y())
+		{
+			return false;
+		}
+
+		if (cell.GetState() != this.state)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	public override int GetHashCode()
+	{
+		throw new NotImplementedException();
 	}
 
 	/// TODO
-	public class Cell : ICell
+	private bool shouldLive(int neighborsAmount)
 	{
-		/// TODO
-		private Position position;
-		/// TODO
-		private State state;
+		bool isAlive = this.state == State.LIVE;
+		bool shouldRemainAlive = neighborsAmount == 2 || neighborsAmount == 3;
 
-		/// TODO
-		public Cell(Position position, State state)
+		if (isAlive && shouldRemainAlive)
 		{
-			this.position = position;
-			this.state = state;
-		}
-
-		/// <inheritdoc /> 
-		public void SetState(int neighborsAmount)
-		{
-			if (this.shouldLive(neighborsAmount) || this.shouldBorn(neighborsAmount))
-			{
-				this.state = State.LIVE;
-			}
-
-			if (this.shouldDie(neighborsAmount))
-			{
-				this.state = State.DEAD;
-			}
-		}
-
-		/// <inheritdoc /> 
-		public Position GetPosition()
-		{
-			return this.position;
-		}
-
-		/// <inheritdoc /> 
-		public State GetState()
-		{
-			return this.state;
-		}
-
-		/// <inheritdoc /> 
-		public object Clone()
-		{
-			return new Cell(this.position, this.state);
-		}
-
-		// TODO: make it better.
-		// override object.Equals
-		public override bool Equals(object obj)
-		{
-			if (obj == null || GetType() != obj.GetType())
-			{
-				return false;
-			}
-
-			Cell cell = (Cell)obj;
-
-			if (cell.GetPosition().X() != this.position.X() || cell.GetPosition().Y() != this.position.Y())
-			{
-				return false;
-			}
-
-			if (cell.GetState() != this.state)
-			{
-				return false;
-			}
-
 			return true;
 		}
 
-		public override int GetHashCode()
+		return false;
+	}
+
+	/// TODO
+	private bool shouldBorn(int neighborsAmount)
+	{
+		bool isDead = this.state == State.DEAD;
+		bool shouldBeReproduced = neighborsAmount == 3;
+
+		if (isDead && shouldBeReproduced)
 		{
-			throw new NotImplementedException();
+			return true;
 		}
 
-		/// TODO
-		private bool shouldLive(int neighborsAmount)
+		return false;
+	}
+
+	/// TODO
+	private bool shouldDie(int neighborsAmount)
+	{
+		bool isUnderpopulated = neighborsAmount < 2;
+		bool isOverpopulated = neighborsAmount > 3;
+
+		if (isUnderpopulated || isOverpopulated)
 		{
-			bool isAlive = this.state == State.LIVE;
-			bool shouldRemainAlive = neighborsAmount == 2 || neighborsAmount == 3;
-
-			if (isAlive && shouldRemainAlive)
-			{
-				return true;
-			}
-
-			return false;
+			return true;
 		}
 
-		/// TODO
-		private bool shouldBorn(int neighborsAmount)
-		{
-			bool isDead = this.state == State.DEAD;
-			bool shouldBeReproduced = neighborsAmount == 3;
-
-			if (isDead && shouldBeReproduced)
-			{
-				return true;
-			}
-
-			return false;
-		}
-
-		/// TODO
-		private bool shouldDie(int neighborsAmount)
-		{
-			bool isUnderpopulated = neighborsAmount < 2;
-			bool isOverpopulated = neighborsAmount > 3;
-
-			if (isUnderpopulated || isOverpopulated)
-			{
-				return true;
-			}
-
-			return false;
-		}
+		return false;
 	}
 }

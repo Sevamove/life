@@ -1,8 +1,7 @@
-namespace Life
+namespace Life.CellState;
+
+public enum State
 {
-	public enum State
-	{
-		DEAD,
-		LIVE
-	}
+	DEAD,
+	LIVE
 }

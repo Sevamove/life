@@ -1,9 +1,12 @@
 // https://conwaylife.com/ref/lexicon/lex_p.htm#pulsar
-namespace Life.Patterns
+using Life.CellPosition;
+using Life.CellState;
+
+namespace Life.GamePatterns;
+
+public static class PulsarPattern
 {
-	public static class Pulsar
-	{
-		private static readonly Cell[] cells = new Cell[] {
+	private static readonly Cell[] cells = new Cell[] {
 			new Cell(new Position(2, 4), State.LIVE),
 			new Cell(new Position(2, 5), State.LIVE),
 			new Cell(new Position(2, 6), State.LIVE),
@@ -53,9 +56,8 @@ namespace Life.Patterns
 			new Cell(new Position(14, 11), State.LIVE),
 			new Cell(new Position(14, 12), State.LIVE), };
 
-		public static Cell[] GetCells()
-		{
-			return cells;
-		}
+	public static Cell[] GetCells()
+	{
+		return cells;
 	}
 }
