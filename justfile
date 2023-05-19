@@ -1,6 +1,7 @@
 alias ces := create-empty-solution
 alias inp := initialize-new-project
 alias anp := add-new-project
+alias rp := remove-project
 alias run := run-project
 alias d := dotnet
 
@@ -21,6 +22,9 @@ add-new-project project_path:
 
 run-project project_path:
     dotnet run --project {{project_path}}
+
+remove-project project_path:
+    dotnet sln remove {{project_path}}
 
 dotnet *args="--help":
     dotnet {{args}}
