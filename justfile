@@ -8,6 +8,24 @@ alias d := dotnet
 default:
     @just --list
 
+pull:
+    just -f ~/justfile switch-to-school-git-config \
+    && git pull origin-school development
+
+add *files="":
+    git add {{files}}
+
+commit message="":
+    just -f ~/justfile switch-to-school-git-config \
+    && git commit -m {{message}} \
+    && just -f ~/justfile switch-to-personal-git-config
+
+push branch="development":
+    just -f ~/justfile switch-to-school-git-config \
+    && git push -u origin-school {{branch}} \
+    && just -f ~/justfile switch-to-personal-git-config \
+    && git push -u origin-personal {{branch}}
+
 create-new-gitignore:
     dotnet new gitignore
 
