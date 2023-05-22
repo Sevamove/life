@@ -48,12 +48,17 @@ public class Game : IGame
 	// 	}
 	// }
 
-	// TODO: replace GameRepository with the interface.
-	private readonly GameRepository gameRepository;
+	private readonly IRepository<GameEntity> gameRepository;
 
 	public Game()
 	{
 		this.gameRepository = new GameRepository();
+	}
+
+	// Note: sometimes it is not a good practice to use 2 constructors at the same time.
+	public Game(IRepository<GameEntity> repository)
+	{
+		this.gameRepository = repository;
 	}
 
 	public GameDTO CreateNewGame(GameDTO game)
