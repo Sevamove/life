@@ -10,7 +10,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ShouldReturnEightPositions()
+	public void GetSurroundedPositions_ShouldReturnEightPositions()
 	{
 		// Arrange.
 
@@ -18,7 +18,7 @@ public class PositionTest
 
 		// Act.
 
-		var actualLength = this.position.GetSurroundedCells().Length;
+		var actualLength = this.position.GetSurroundedPositions().Length;
 
 		// Assert.
 
@@ -58,7 +58,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectUpperPosition()
+	public void GetSurroundedPositions_ReturnsCorrectUpperPosition()
 	{
 		// Arrange.
 
@@ -66,7 +66,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualUp = position.GetSurroundedCells()[0];
+		Position actualUp = position.GetSurroundedPositions()[0];
 
 		// Assert.
 
@@ -75,7 +75,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectLowerPosition()
+	public void GetSurroundedPositions_ReturnsCorrectLowerPosition()
 	{
 		// Arrange.
 
@@ -83,7 +83,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualDown = position.GetSurroundedCells()[1];
+		Position actualDown = position.GetSurroundedPositions()[1];
 
 		// Assert.
 
@@ -92,7 +92,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectLeftPosition()
+	public void GetSurroundedPositions_ReturnsCorrectLeftPosition()
 	{
 		// Arrange.
 
@@ -100,7 +100,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualLeft = position.GetSurroundedCells()[2];
+		Position actualLeft = position.GetSurroundedPositions()[2];
 
 		// Assert.
 
@@ -109,7 +109,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectRightPosition()
+	public void GetSurroundedPositions_ReturnsCorrectRightPosition()
 	{
 		// Arrange.
 
@@ -117,7 +117,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualRight = position.GetSurroundedCells()[3];
+		Position actualRight = position.GetSurroundedPositions()[3];
 
 		// Assert.
 
@@ -126,7 +126,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectUpLeftPosition()
+	public void GetSurroundedPositions_ReturnsCorrectUpLeftPosition()
 	{
 		// Arrange.
 
@@ -134,7 +134,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualUpLeft = position.GetSurroundedCells()[4];
+		Position actualUpLeft = position.GetSurroundedPositions()[4];
 
 		// Assert.
 
@@ -143,7 +143,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectUpRightPosition()
+	public void GetSurroundedPositions_ReturnsCorrectUpRightPosition()
 	{
 		// Arrange.
 
@@ -151,7 +151,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualUpRight = position.GetSurroundedCells()[5];
+		Position actualUpRight = position.GetSurroundedPositions()[5];
 
 		// Assert.
 
@@ -160,7 +160,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectDownLeftPosition()
+	public void GetSurroundedPositions_ReturnsCorrectDownLeftPosition()
 	{
 		// Arrange.
 
@@ -168,7 +168,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualDownLeft = position.GetSurroundedCells()[6];
+		Position actualDownLeft = position.GetSurroundedPositions()[6];
 
 		// Assert.
 
@@ -177,7 +177,7 @@ public class PositionTest
 	}
 
 	[Fact]
-	public void GetSurroundedCells_ReturnsCorrectDownRightPosition()
+	public void GetSurroundedPositions_ReturnsCorrectDownRightPosition()
 	{
 		// Arrange.
 
@@ -185,7 +185,7 @@ public class PositionTest
 
 		// Act.
 
-		Position actualDownRight = position.GetSurroundedCells()[7];
+		Position actualDownRight = position.GetSurroundedPositions()[7];
 
 		// Assert.
 

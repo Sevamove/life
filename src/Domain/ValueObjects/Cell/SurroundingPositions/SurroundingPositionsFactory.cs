@@ -1,7 +1,6 @@
-using Life.CellPosition;
-using Life.GridBorder;
+using Domain.ValueObjects.Grid;
 
-namespace Life.CellSurroundingPositions;
+namespace Domain.ValueObjects.Cell.SurroundingPositions;
 
 public class SurroundingPositionsFactory
 {

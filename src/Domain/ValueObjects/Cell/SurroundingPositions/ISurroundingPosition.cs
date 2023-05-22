@@ -1,6 +1,4 @@
-using Life.CellPosition;
-
-namespace Life.CellSurroundingPositions;
+namespace Domain.ValueObjects.Cell.SurroundingPositions;
 
 public interface ISurroundingPosition
 {

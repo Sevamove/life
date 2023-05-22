@@ -1,7 +1,6 @@
-using Life.CellPosition;
-using Life.GridArea;
+using Domain.ValueObjects.Cell;
 
-namespace Life.GridSideBorders;
+namespace Domain.ValueObjects.Grid.SideBorders;
 
 public class UpperBorder : ISideBorder
 {

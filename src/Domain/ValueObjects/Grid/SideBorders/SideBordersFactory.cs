@@ -1,4 +1,4 @@
-namespace Life.GridSideBorders;
+namespace Domain.ValueObjects.Grid.SideBorders;
 
 public class SideBordersFactory
 {

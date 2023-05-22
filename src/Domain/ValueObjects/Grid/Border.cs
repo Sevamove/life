@@ -1,9 +1,7 @@
+using Domain.ValueObjects.Cell;
+using Domain.ValueObjects.Grid.SideBorders;
 
-using Life.CellPosition;
-using Life.GridArea;
-using Life.GridSideBorders;
-
-namespace Life.GridBorder;
+namespace Domain.ValueObjects.Grid;
 
 interface IBorder
 {

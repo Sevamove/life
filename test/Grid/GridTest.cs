@@ -1,3 +1,5 @@
+using Domain.GridArea;
+
 namespace test;
 
 public class GridTest
@@ -8,7 +10,7 @@ public class GridTest
 	public GridTest()
 	{
 		this.grid = new Grid(this.area);
-		this.grid.Update(Pulsar.GetCells());
+		this.grid.Update(PulsarPattern.GetCells());
 	}
 
 	[Theory]
