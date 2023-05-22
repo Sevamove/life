@@ -1,7 +1,7 @@
-namespace Life.CellState;
+namespace Domain.ValueObjects.Cell;
 
 public enum State
 {
-	DEAD,
-	LIVE
+	DEAD = 0,
+	LIVE = 1
 }

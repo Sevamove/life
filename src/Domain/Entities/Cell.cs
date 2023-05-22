@@ -1,7 +1,6 @@
-using Life.CellPosition;
-using Life.CellState;
+using Domain.ValueObjects.Cell;
 
-namespace Life;
+namespace Domain.Entities;
 
 /// TODO
 public interface ICell : ICloneable

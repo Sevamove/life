@@ -1,10 +1,8 @@
-using Life.CellPosition;
-using Life.CellState;
-using Life.CellSurroundingPositions;
-using Life.GridArea;
-using Life.GridBorder;
+using Domain.ValueObjects.Cell;
+using Domain.ValueObjects.Cell.SurroundingPositions;
+using Domain.ValueObjects.Grid;
 
-namespace Life;
+namespace Domain.Aggregates;
 
 interface IGrid
 {

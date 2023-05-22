@@ -1,29 +1,100 @@
-using Life.GamePatterns;
-using Life.GridArea;
+using Infrastructure;
+using Infrastructure.Adapters;
+using Infrastructure.DTO;
+using Infrastructure.DTO.Builders;
+using Infrastructure.Entities;
+using Infrastructure.Entities.Builders;
+using Infrastructure.Repositories;
 
-namespace Life;
+namespace Application;
 
-public class Game
+public interface IGame
 {
-	public static void Play()
+	// Create a new game.
+	public GameDTO CreateNewGame(GameDTO game);
+	// Save a played game to DB.
+	public bool SaveGrid();
+	// Load a game from the DB.
+	public Task<GameDTO?> LoadGame(string id);
+	public GameDTO[] LoadGames();
+	// Update the grid and return an updated version.
+	public void UpdateGame();
+	// Delete a game in DB.
+	public bool DeleteGame(GridDTO grid);
+}
+
+// TODO: Create service class for the controller.
+public class Game : IGame
+{
+	// public static void Play()
+	// {
+	// 	Area area = new Area(20, 20);
+	// 	UI ui = new UI(1, area);
+	// 	Grid grid = new Grid(area);
+
+	// 	grid.Initialize();
+
+	// 	Cell[] cells = PulsarPattern.GetCells();
+
+	// 	grid.Update(cells);
+
+	// 	while (true)
+	// 	{
+	// 		ui.Clear();
+	// 		ui.Display(grid.GetCells());
+	// 		ui.Delay();
+
+	// 		grid.Renew();
+	// 	}
+	// }
+
+	// TODO: replace GameRepository with the interface.
+	private readonly GameRepository gameRepository;
+
+	public Game()
 	{
-		Area area = new Area(20, 20);
-		UI ui = new UI(1, area);
-		Grid grid = new Grid(area);
+		this.gameRepository = new GameRepository();
+	}
 
-		grid.Initialize();
+	public GameDTO CreateNewGame(GameDTO game)
+	{
+		List<GameEntity> gameEntities = new List<GameEntity>() {
+			GameEntityBuilder.GetGameEntity(game)};
 
-		Cell[] cells = PulsarPattern.GetCells();
+		this.gameRepository.SaveAllAsync(gameEntities);
 
-		grid.Update(cells);
+		return game;
+	}
 
-		while (true)
+	public bool DeleteGame(GridDTO grid)
+	{
+		throw new NotImplementedException();
+	}
+
+	public async Task<GameDTO?> LoadGame(string id)
+	{
+		GameEntity? game = await this.gameRepository.FindByIdAsync<GameEntity>(id);
+
+		if (game != null)
 		{
-			ui.Clear();
-			ui.Display(grid.GetCells());
-			ui.Delay();
-
-			grid.Renew();
+			return GameDTOBuilder.GetGameDTO(game);
 		}
+
+		return null;
+	}
+
+	public GameDTO[] LoadGames()
+	{
+		throw new NotImplementedException();
+	}
+
+	public bool SaveGrid()
+	{
+		throw new NotImplementedException();
+	}
+
+	public void UpdateGame()
+	{
+		throw new NotImplementedException();
 	}
 }

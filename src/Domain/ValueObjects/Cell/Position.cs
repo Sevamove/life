@@ -1,4 +1,4 @@
-namespace Life.CellPosition;
+namespace Domain.ValueObjects.Cell;
 
 public interface IPosition
 {
