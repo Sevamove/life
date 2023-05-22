@@ -15,9 +15,9 @@ pull:
 add *files="":
     git add {{files}}
 
-commit message="":
+commit *message="":
     just -f ~/justfile switch-to-school-git-config \
-    && git commit -m {{message}} \
+    && git commit -m "{{message}}" \
     && just -f ~/justfile switch-to-personal-git-config
 
 push branch="development":
