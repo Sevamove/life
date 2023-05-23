@@ -1,7 +1,13 @@
 ﻿using Application;
+using Infrastructure.DTO;
+using Infrastructure.Enums;
+using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Events;
+using UI.Console.Handlers;
+using UI.Console.Listeners;
 using UI.Console.Pages;
+using UI.Console.Types;
 using UI.Console.Utilities;
 
 public class Program
@@ -17,9 +23,11 @@ public class Program
 		GameNewPage gameNewPage = new GameNewPage(game);
 		PlaygroundPage playgroundPage = new PlaygroundPage(game);
 
-		PageEventSubscriber pageEventSubscriber = new PageEventSubscriber();
-		GamesEventSubscriber gamesEventSubscriber = new GamesEventSubscriber();
-		GameNewEventSubscriber gameNewEventSubscriber = new GameNewEventSubscriber();
+		// PageEventSubscriber pageEventSubscriber = new PageEventSubscriber();
+		// GamesEventSubscriber gamesEventSubscriber = new GamesEventSubscriber();
+		// GameNewEventSubscriber gameNewEventSubscriber = new GameNewEventSubscriber();
+
+		GameDTO[]? gameDTOs = null;
 
 		// PageEventPublisher pageEventPublisher = new PageEventPublisher();
 
@@ -28,21 +36,35 @@ public class Program
 			switch (router.GetCurrentpage())
 			{
 				case Page.Home:
-					homePage.Render();
-					router.SetCurrentPage(Page.Game_New);
+					while (true)
+					{
+						homePage.Render();
+						string userInput = UserInputListener.Listen(homePage.ChildComponents);
+						ElementId buttonId = ElementId.GoToGameNewPageButton;
+						BaseButton button = Searcher.GetButton(buttonId, game);
+						ClickResult clickResult = UserInputHandler.HandleButton(button);
+
+						gameDTOs = clickResult.GameDTOs;
+
+						if (clickResult.Page != null)
+						{
+							router.SetCurrentPage((Page)clickResult.Page);
+							break;
+						}
+					}
 					break;
-				case Page.Game_New:
-					gameNewPage.Render();
-					router.SetCurrentPage(Page.Games);
-					break;
-				case Page.Games:
-					gamesPage.Render();
-					router.SetCurrentPage(Page.Games);
-					break;
-				case Page.Playground:
-					playgroundPage.Render();
-					router.SetCurrentPage(Page.Playground);
-					break;
+				// case Page.Game_New:
+				// 	gameNewPage.Render();
+				// 	router.SetCurrentPage(Page.Games);
+				// 	break;
+				// case Page.Games:
+				// 	gamesPage.Render();
+				// 	router.SetCurrentPage(Page.Games);
+				// 	break;
+				// case Page.Playground:
+				// 	playgroundPage.Render();
+				// 	router.SetCurrentPage(Page.Playground);
+				// 	break;
 				default:
 					break;
 			}
