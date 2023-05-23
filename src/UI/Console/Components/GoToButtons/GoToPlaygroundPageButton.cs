@@ -1,6 +1,7 @@
 using Infrastructure.Enums;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
+using UI.Console.Types;
 
 namespace UI.Console.Components.GoToButtons;
 
@@ -13,9 +14,14 @@ public class GoToPlaygroundPageButton : BaseButton
 	{
 	}
 
-	public override void OnClick()
+	public override ClickResult OnClick()
 	{
 		System.Console.WriteLine("Go to playground page button clicked!");
-		// Event.Invoke(Page.Playground);
+
+		return new ClickResult
+		{
+			GameDTOs = null,
+			Page = Page.Playground
+		};
 	}
 }

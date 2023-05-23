@@ -1,6 +1,7 @@
 using Infrastructure.Enums;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
+using UI.Console.Types;
 
 namespace UI.Console.Components.GoToButtons;
 
@@ -13,9 +14,15 @@ public class GoToHomePageButton : BaseButton
 	{
 	}
 
-	public override void OnClick()
+	public override ClickResult OnClick()
 	{
 		System.Console.WriteLine("Go to home page button clicked!");
+
+		return new ClickResult
+		{
+			GameDTOs = null,
+			Page = Page.Home
+		};
 
 		// Event.Invoke(Page.Home);
 	}

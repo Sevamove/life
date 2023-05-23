@@ -1,7 +1,9 @@
 using Application;
+using Infrastructure.DTO;
 using Infrastructure.Enums;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
+using UI.Console.Types;
 
 namespace UI.Console.Components;
 
@@ -17,10 +19,16 @@ public class LoadGamesButton : BaseButton
 		this.game = game;
 	}
 
-	public override void OnClick()
+	public override ClickResult OnClick()
 	{
 		System.Console.WriteLine("Load game button clicked!");
 
-		// Event.Invoke(this.game.LoadGames());
+		GameDTO[] gameDTOs = this.game.LoadGames();
+
+		return new ClickResult
+		{
+			GameDTOs = gameDTOs,
+			Page = Page.Playground
+		};
 	}
 }
