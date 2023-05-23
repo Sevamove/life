@@ -36,6 +36,9 @@ public class NavBarFactory
 
 	public static NavBar GetPlaygroundNavBar(Game game)
 	{
-		throw new NotImplementedException();
+		// TODO: populate the list with components.
+		BaseComponent[] childComponents = new BaseComponent[] { };
+
+		return new NavBar(game, childComponents);
 	}
 }
