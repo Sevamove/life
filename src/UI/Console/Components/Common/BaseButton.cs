@@ -1,5 +1,6 @@
 using Infrastructure.Enums;
 using UI.Console.Interfaces;
+using UI.Console.Types;
 
 namespace UI.Console.Components.Common;
 
@@ -36,5 +37,5 @@ public abstract class BaseButton : BaseComponent, IButton
 		return this.title;
 	}
 
-	public abstract void OnClick();
+	public abstract ClickResult OnClick();
 }

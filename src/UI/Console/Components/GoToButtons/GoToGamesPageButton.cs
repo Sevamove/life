@@ -1,6 +1,7 @@
 using Infrastructure.Enums;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
+using UI.Console.Types;
 
 namespace UI.Console.Components.GoToButtons;
 
@@ -13,9 +14,14 @@ public class GoToGamesPageButton : BaseButton
 	{
 	}
 
-	public override void OnClick()
+	public override ClickResult OnClick()
 	{
 		System.Console.WriteLine("Go to game page button clicked!");
-		// Event.Invoke(Page.Games);
+
+		return new ClickResult
+		{
+			GameDTOs = null,
+			Page = Page.Games
+		};
 	}
 }

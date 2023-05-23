@@ -3,11 +3,11 @@ using UI.Console.Enums;
 namespace UI.Console.Utilities;
 
 // TODO: change name to Router
-public class Route
+public class Router
 {
 	private Page currentPage;
 
-	public Route(Page startPage)
+	public Router(Page startPage)
 	{
 		this.currentPage = startPage;
 	}

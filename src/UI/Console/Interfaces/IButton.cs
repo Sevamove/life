@@ -1,8 +1,10 @@
+using UI.Console.Types;
+
 namespace UI.Console.Interfaces;
 
 public interface IButton : IComponent
 {
-	public void OnClick();
+	public ClickResult OnClick();
 	public string Content();
 	public string Title();
 }
