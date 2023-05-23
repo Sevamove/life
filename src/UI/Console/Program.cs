@@ -10,7 +10,7 @@ public class Program
 	{
 		Game game = new Game();
 
-		Route router = new Route(Page.Home);
+		Router router = new Router(Page.Home);
 
 		HomePage homePage = new HomePage(game);
 		GamesPage gamesPage = new GamesPage(game);
