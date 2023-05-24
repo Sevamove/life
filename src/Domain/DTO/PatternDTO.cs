@@ -1,4 +1,4 @@
 
-// namespace Infrastructure.DTO;
+// namespace Domain.DTO;
 
 // public record PatternDTO(Cell[] Cells);

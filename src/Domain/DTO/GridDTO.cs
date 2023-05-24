@@ -1,3 +1,3 @@
-namespace Infrastructure.DTO;
+namespace Domain.DTO;
 
 public record GridDTO(AreaDTO Area, CellDTO[] Cells);
