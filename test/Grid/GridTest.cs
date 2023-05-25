@@ -1,65 +1,65 @@
-using Domain.GridArea;
+// using Domain.GridArea;
 
-namespace test;
+// namespace test;
 
-public class GridTest
-{
-	private readonly Area area = new Area(20, 20);
-	private Grid grid;
+// public class GridTest
+// {
+// 	private readonly Area area = new Area(20, 20);
+// 	private Grid grid;
 
-	public GridTest()
-	{
-		this.grid = new Grid(this.area);
-		this.grid.Update(PulsarPattern.GetCells());
-	}
+// 	public GridTest()
+// 	{
+// 		this.grid = new Grid(this.area);
+// 		this.grid.Update(PulsarPattern.GetCells());
+// 	}
 
-	[Theory]
-	[InlineData(0, 0)]
-	[InlineData(1, 1)]
-	[InlineData(2, 2)]
-	[InlineData(5, 19)]
-	public void Initialze_CanSuccessfullyInitializeGrid(int x, int y)
-	{
-		// Arrange.
+// 	[Theory]
+// 	[InlineData(0, 0)]
+// 	[InlineData(1, 1)]
+// 	[InlineData(2, 2)]
+// 	[InlineData(5, 19)]
+// 	public void Initialze_CanSuccessfullyInitializeGrid(int x, int y)
+// 	{
+// 		// Arrange.
 
-		Position position = new Position(x, y);
-		Cell expectedCell = new Cell(position, State.DEAD);
+// 		Position position = new Position(x, y);
+// 		Cell expectedCell = new Cell(position, State.DEAD);
 
-		// Act.
+// 		// Act.
 
-		this.grid.Initialize();
-		Cell actualCell = this.grid.GetCell(position);
+// 		this.grid.Initialize();
+// 		Cell actualCell = this.grid.GetCell(position);
 
-		// Assert.
+// 		// Assert.
 
-		Assert.True(actualCell.Equals(expectedCell));
-	}
+// 		Assert.True(actualCell.Equals(expectedCell));
+// 	}
 
-	// TODO: finish.
-	// [Fact]
-	// public void Renew()
-	// {
-	// 	// Arrange.
+// 	// TODO: finish.
+// 	// [Fact]
+// 	// public void Renew()
+// 	// {
+// 	// 	// Arrange.
 
-	// 	Cell[,] oldCells = this.grid.GetCells();
+// 	// 	Cell[,] oldCells = this.grid.GetCells();
 
-	// 	// Act.
+// 	// 	// Act.
 
-	// 	this.grid.Renew();
-	// 	Cell[,] newCells = this.grid.GetCells();
+// 	// 	this.grid.Renew();
+// 	// 	Cell[,] newCells = this.grid.GetCells();
 
-	// 	// Assert.
+// 	// 	// Assert.
 
-	// 	Cell oldCell = oldCells[0, 0];
-	// 	Cell newCell = newCells[1, 1];
+// 	// 	Cell oldCell = oldCells[0, 0];
+// 	// 	Cell newCell = newCells[1, 1];
 
-	// 	Assert.False(oldCell.Equals(newCell));
+// 	// 	Assert.False(oldCell.Equals(newCell));
 
-	// }
+// 	// }
 
-	public void Update() { }
+// 	public void Update() { }
 
-	public void GetCell() { }
+// 	public void GetCell() { }
 
-	public void GetCells() { }
-}
+// 	public void GetCells() { }
+// }

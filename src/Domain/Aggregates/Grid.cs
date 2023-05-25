@@ -1,22 +1,9 @@
+using Domain.Interfaces;
 using Domain.ValueObjects.Cell;
 using Domain.ValueObjects.Cell.SurroundingPositions;
 using Domain.ValueObjects.Grid;
 
 namespace Domain.Aggregates;
-
-interface IGrid
-{
-	// Write methods.
-
-	public void Initialize();
-	public void Renew();
-	public void Update(Cell[] cells);
-
-	// Read methods.
-
-	public Cell GetCell(Position position);
-	public Cell[,] GetCells();
-}
 
 public class Grid : IGrid
 {
@@ -68,6 +55,11 @@ public class Grid : IGrid
 
 			this.cells[x, y] = cell;
 		}
+	}
+
+	public Area GetArea()
+	{
+		return this.area;
 	}
 
 	public Cell GetCell(Position position)

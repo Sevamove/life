@@ -44,6 +44,9 @@ run-project project_path:
 remove-project project_path:
     dotnet sln remove {{project_path}}
 
+install-package package_name:
+    dotnet add package {{package_name}}
+
 dotnet *args="--help":
     dotnet {{args}}
 
