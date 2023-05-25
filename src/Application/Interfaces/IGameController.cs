@@ -4,10 +4,9 @@ namespace Application.Interfaces;
 
 public interface IGameController
 {
-	public Task<GameDTO> CreateNewGame(GameDTO game);
-	public Task<GameDTO> SaveGame(GameDTO game);
-	public Task<GameDTO?> LoadGame(string id);
-	public Task<GameDTO[]?> LoadGames();
-	public Task<GameDTO> UpdateGame(GameDTO game);
-	public bool DeleteGame(GridDTO grid);
+	public Task<GameDTO> PostGame(GameDTO game); // Creates a new game.
+	public Task<GameDTO> PutGame(GameDTO game); // Updates and saves the game.
+	public Task<GameDTO?> GetGame(string id); // Fetches a game of `id` from DB.
+	public Task<GameDTO[]?> GetGames(); // Fetches all games from DB.
+	public bool DeleteGame(GameDTO game); // Removes the game from DB.
 }

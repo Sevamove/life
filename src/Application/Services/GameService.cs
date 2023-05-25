@@ -16,7 +16,7 @@ public class GameService : IGameService
 		this.gameRepository = repository;
 	}
 
-	public async Task<GameDTO> CreateNewGame(GameDTO game)
+	public async Task<GameDTO> PostGame(GameDTO game)
 	{
 		List<GameEntity> gameEntities = new List<GameEntity>() {
 			GameEntityBuilder.GetGameEntity(game)};
@@ -26,12 +26,12 @@ public class GameService : IGameService
 		return GameDTOBuilder.GetGameDTO(savedGameEntities.ToArray()[0]);
 	}
 
-	public void DeleteGame(GameDTO game)
+	public bool DeleteGame(GameDTO game)
 	{
 		throw new NotImplementedException();
 	}
 
-	public async Task<GameDTO?> LoadGame(string id)
+	public async Task<GameDTO?> GetGame(string id)
 	{
 		GameEntity? game = await this.gameRepository.FindByIdAsync<GameEntity>(id);
 
@@ -43,7 +43,7 @@ public class GameService : IGameService
 		return null;
 	}
 
-	public async Task<GameDTO[]?> LoadGames()
+	public async Task<GameDTO[]?> GetGames()
 	{
 		List<GameEntity>? data = await this.gameRepository.FindAllAsync();
 
@@ -55,7 +55,7 @@ public class GameService : IGameService
 		return null;
 	}
 
-	public Task<GameDTO> SaveGame(GameDTO game)
+	public Task<GameDTO> PutGame(GameDTO game)
 	{
 		throw new NotImplementedException();
 	}

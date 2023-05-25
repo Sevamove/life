@@ -18,7 +18,7 @@ public class GameControllerTest
 	}
 
 	[Fact]
-	public async void CreateNewGame_ReturnsGameDTO()
+	public async void PostGame_ReturnsGameDTO()
 	{
 		// Arrange.
 
@@ -27,7 +27,7 @@ public class GameControllerTest
 
 		// Act.
 
-		GameDTO expectedGame = await this.gameController.CreateNewGame(gameDTO);
+		GameDTO expectedGame = await this.gameController.PostGame(gameDTO);
 
 		// Assert.
 
@@ -37,7 +37,7 @@ public class GameControllerTest
 	}
 
 	[Fact]
-	public async void LoadGames_ReturnsGameDTOs()
+	public async void GetGames_ReturnsGameDTOs()
 	{
 		// Arrange.
 
@@ -46,7 +46,7 @@ public class GameControllerTest
 
 		// Act.
 
-		GameDTO[]? expectedGames = await this.gameController.LoadGames();
+		GameDTO[]? expectedGames = await this.gameController.GetGames();
 
 		// Assert.
 
@@ -57,7 +57,7 @@ public class GameControllerTest
 	[Theory]
 	[InlineData("1", "My Game 1")]
 	[InlineData("5712&%$%&#   afl", "我的游戏")]
-	public async void LoadGame_ReturnsGameDTO(string actualGameId, string actualGameName)
+	public async void GetGame_ReturnsGameDTO(string actualGameId, string actualGameName)
 	{
 		// Arrange.
 
@@ -66,7 +66,7 @@ public class GameControllerTest
 
 		// Act.
 
-		GameDTO? expectedGame = await this.gameController.LoadGame(actualGameId);
+		GameDTO? expectedGame = await this.gameController.GetGame(actualGameId);
 		string expectedGameId = expectedGame.Id;
 		string expectedGameName = expectedGame.Name;
 
@@ -87,7 +87,7 @@ public class GameControllerTest
 		IGame gameMock = new GameMock(gameId, gameName);
 		GameDTO gameDTO = GameDTOBuilder.GetGameDTO(gameMock);
 
-		GameDTO expectedGame = await this.gameController.CreateNewGame(gameDTO);
+		GameDTO expectedGame = await this.gameController.PostGame(gameDTO);
 
 		return true;
 	}

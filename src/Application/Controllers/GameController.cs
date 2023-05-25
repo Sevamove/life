@@ -15,43 +15,28 @@ public class GameController : IGameController
 		this.gameService = new GameService(new GameRepository());
 	}
 
-	public async Task<GameDTO> CreateNewGame(GameDTO game)
+	public async Task<GameDTO> PostGame(GameDTO game)
 	{
-		return await this.gameService.CreateNewGame(game);
+		return await this.gameService.PostGame(game);
 	}
 
-	public void DeleteGame(GameDTO game)
+	public bool DeleteGame(GameDTO game)
 	{
-		this.gameService.DeleteGame(game);
+		return this.gameService.DeleteGame(game);
 	}
 
-	public bool DeleteGame(GridDTO grid)
+	public async Task<GameDTO?> GetGame(string id)
 	{
-		throw new NotImplementedException();
+		return await this.gameService.GetGame(id);
 	}
 
-	public async Task<GameDTO?> LoadGame(string id)
+	public async Task<GameDTO[]?> GetGames()
 	{
-		return await this.gameService.LoadGame(id);
+		return await this.gameService.GetGames();
 	}
 
-	public async Task<GameDTO[]?> LoadGames()
+	public async Task<GameDTO> PutGame(GameDTO game)
 	{
-		return await this.gameService.LoadGames();
-	}
-
-	public async Task<GameDTO> SaveGame(GameDTO game)
-	{
-		return await this.gameService.SaveGame(game);
-	}
-
-	public void UpdateGame()
-	{
-		throw new NotImplementedException();
-	}
-
-	public Task<GameDTO> UpdateGame(GameDTO game)
-	{
-		throw new NotImplementedException();
+		return await this.gameService.PutGame(game);
 	}
 }
