@@ -3,7 +3,7 @@ alias inp := initialize-new-project
 alias anp := add-new-project
 alias rp := remove-project
 alias run := run-project
-alias d := dotnet
+alias d := debug
 
 default:
     @just --list
@@ -40,6 +40,9 @@ add-new-project project_path:
 
 run-project project_path:
     dotnet run --project {{project_path}}
+
+debug project_path:
+    dotnet run --project {{project_path}} --configuration debug
 
 remove-project project_path:
     dotnet sln remove {{project_path}}

@@ -1,23 +1,12 @@
-namespace Infrastructure.Enums;
+namespace UI.Console.Enums;
 
 public enum ElementId
 {
-	// REST API CRUD buttons.
-	CreateNewGameButton,
-	LoadGameButton,
-	LoadGamesButton,
-	PlayGameButton,
-	SaveGameButton,
-	// Anchors with href values.
-	GoToGameNewPageButton,
-	GoToGamesPageButton,
-	GoToHomePageButton,
-	GoToPlaygroundPageButton,
-	// Sections.
-	GridSection,
-	// Navbars.
-	NavBar,
-	// Other buttons.
-	PauseGameButton,
-	QuitGameButton,
+	Anchor, // Link
+	Button, // Action
+	Nav,
+	Input,
+	Form,
+	Section,
+	Main // It is recommended to have only one <main> element per page.
 }

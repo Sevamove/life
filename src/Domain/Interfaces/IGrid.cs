@@ -10,6 +10,7 @@ public interface IGrid
 	public void Initialize();
 	public void Renew();
 	public void Update(Cell[] cells);
+	public void Update(Cell[,] cells);
 
 	// Read methods.
 

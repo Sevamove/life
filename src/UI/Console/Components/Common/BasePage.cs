@@ -1,23 +1,11 @@
+using UI.Console.Enums;
 using UI.Console.Interfaces;
 
 namespace UI.Console.Components.Common;
 
-public abstract class BasePage : IPage
+public abstract class BasePage : BaseComponent, IPage
 {
-	public readonly Game Game;
-	public readonly BaseComponent[] ChildComponents;
-
-	public BasePage(Game game, BaseComponent[] childComponents)
+	public BasePage(ComponentId componentId, IComponent[] childComponents) : base(componentId, ElementId.Main, childComponents)
 	{
-		this.Game = game;
-		this.ChildComponents = childComponents;
-	}
-
-	public virtual void Render()
-	{
-		foreach (var childComponent in this.ChildComponents)
-		{
-			childComponent.Render();
-		}
 	}
 }

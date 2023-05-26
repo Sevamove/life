@@ -1,81 +1,27 @@
-using Application;
 using UI.Console.Components.Common;
 using UI.Console.Components.Factories;
+using UI.Console.Enums;
+using UI.Console.Types;
 
 namespace UI.Console.Pages;
 
 public class HomePage : BasePage
 {
-	public HomePage(Game game) : base(game, ComponentsFactory.GetHomePageComponents(game))
+	public HomePage() : base(
+		ComponentId.HomePage,
+		ComponentsFactory.GetHomePageChildComponents())
 	{
 	}
+
+	public override void Render()
+	{
+		this.componentHelper.Render(ComponentId.HomeNavBar);
+	}
+
+	public async override Task<ComponentResult> Execute()
+	{
+		ComponentResult navBarResult = await this.componentHelper.Execute(ComponentId.HomeNavBar);
+
+		return navBarResult;
+	}
 }
-
-// using Application;
-// using Infrastructure.Enums;
-// using UI.Console.Components.Common;
-// using UI.Console.Components;
-// using UI.Console.Components.Common;
-// using UI.Console.Components.Factories;
-// using UI.Console.Enums;
-
-// // TODO: create IPage interface and inherit this page from it.
-// public class HomePage : BasePage
-// {
-// 	// private readonly Game game;
-// 	// private readonly PageEventSubscriber pageEventSubscriber;
-// 	// public NavBar<Page> NavBarComponent;
-
-// 	public HomePage(Game game) : base(game, ComponentsFactory.GetHomePageComponents(game))
-// 	{
-// 		// this.game = game;
-// 		// this.pageEventSubscriber = new PageEventSubscriber();
-// 		// this.NavBarComponent = NavBarFactory.GetHomeNavBar(this.game);
-// 	}
-
-// 	// public void HandleOnClick()
-// 	// {
-// 	// 	while (true)
-// 	// 	{
-// 	// 		int userInputInt = -1;
-// 	// 		string? userInputString = System.Console.ReadLine();
-
-// 	// 		if (userInputString != null && userInputString != "")
-// 	// 		{
-// 	// 			bool success = int.TryParse(userInputString, out userInputInt);
-
-// 	// 			if (success)
-// 	// 			{
-// 	// 				Element<Page>? component = Array.Find(this.NavBarComponent.ChildComponents,
-// 	// 					(component) => component.Id == (ElementId)userInputInt);
-
-// 	// 				if (component != null)
-// 	// 				{
-// 	// 					component.OnClick();
-// 	// 					// return component.Href();
-// 	// 					break;
-// 	// 				}
-
-// 	// 				System.Console.WriteLine("Error occurred. Provided invalid option. Try again.");
-// 	// 			}
-// 	// 			System.Console.WriteLine("Error occurred. Provided invalid option. Try again.");
-// 	// 		}
-// 	// 		System.Console.WriteLine("Error occurred. Provided invalid option. Try again.");
-// 	// 	}
-// 	// }
-
-// 	// public void HandleEvent()
-// 	// {
-// 	// 	Array.ForEach(
-// 	// 		this.NavBarComponent.ChildComponents,
-// 	// 		(component) => component.Event += this.pageEventSubscriber.UpdateCurrentPage);
-// 	// }
-
-// 	public override void Render()
-// 	{
-// 		foreach (var childComponent in this.ChildComponents)
-// 		{
-// 			childComponent.Render();
-// 		}
-// 	}
-// }

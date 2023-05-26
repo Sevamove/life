@@ -39,9 +39,14 @@ public class GridDTOBuilder
 			for (int y = 0; y < area.Height; y++)
 			{
 				// TODO: Make this code simpler.
-				Cell cell = (Cell)grid.GetCell(new Position(x, y)).Clone();
+				Cell cell = (Cell)grid.GetCell(new Position(x, y));
 				PositionDTO position = new PositionDTO(cell.GetPosition().X(), cell.GetPosition().Y());
 				int state = (int)cell.GetState();
+				// TODO: remove
+				if (cell.GetState() == State.LIVE)
+				{
+					System.Console.WriteLine("🟦");
+				}
 
 				cells[x, y] = new CellDTO(x.ToString() + y.ToString(), position, state);
 			}

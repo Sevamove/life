@@ -1,15 +1,15 @@
-using Application;
-using UI.Console.Components.Common;
+// using Application;
+// using UI.Console.Components.Common;
 
-namespace UI.Console.Components.GoToButtons;
+// namespace UI.Console.Components.GoToButtons;
 
-public class CRUDButtonsFactory
-{
-	public static BaseButton[] GetAllCRUDButtons(Game game)
-	{
-		return new BaseButton[] {
-			new CreateNewGameButton(game),
-			new LoadGamesButton(game)
-		};
-	}
-}
+// public class CRUDButtonsFactory
+// {
+// 	public static BaseButton[] GetAllCRUDButtons(Game game)
+// 	{
+// 		return new BaseButton[] {
+// 			new PostGameButton(game),
+// 			new GetGamesButton(game)
+// 		};
+// 	}
+// }

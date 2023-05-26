@@ -44,6 +44,11 @@ public class Grid : IGrid
 		this.cells = newCells;
 	}
 
+	public void Update(Cell[,] cells)
+	{
+		this.cells = cells;
+	}
+
 	public void Update(Cell[] cells)
 	{
 		for (int i = 0; i < cells.Length; i++)

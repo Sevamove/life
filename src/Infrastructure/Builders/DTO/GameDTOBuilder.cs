@@ -31,4 +31,12 @@ public class GameDTOBuilder
 
 		return gameDTOs;
 	}
+	// V
+	// 	public static GameDTO GetGameDTO(string gameId, string gameName, int areaWidth, int areaHeight, string[] cellsPositions)
+	// 	{
+	// 		// Cell positions 0-0 12-11 ...
+	// 		GameDTO game = new GameDTO(gameId, gameName, new GridDTO(new AreaDTO(areaWidth, areaHeight), new CellDTO[] {
+
+	// 		}));
+	// 	}
 }

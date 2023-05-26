@@ -1,5 +1,5 @@
-using Infrastructure.Enums;
 using UI.Console.Components.Common;
+using UI.Console.Enums;
 using UI.Console.Types;
 
 namespace UI.Console.Handlers;
@@ -15,12 +15,12 @@ public class UserInputHandler
 	// 	this.components = components;
 	// }
 
-	public static ClickResult HandleButton(BaseButton button)
-	{
-		return button.OnClick();
-	}
+	// public static ButtonResult HandleButton(BaseButton button)
+	// {
+	// 	return button.OnClick();
+	// }
 
-	public static ElementId Handle(string userInput)
+	public static ComponentId Handle(string userInput)
 	{
 		int userInputInt = -1;
 
@@ -33,7 +33,7 @@ public class UserInputHandler
 			throw new Exception("Can not handle an invalid user input.");
 		}
 
-		ElementId componentId = (ElementId)userInputInt;
+		ComponentId componentId = (ComponentId)userInputInt;
 
 		return componentId;
 	}

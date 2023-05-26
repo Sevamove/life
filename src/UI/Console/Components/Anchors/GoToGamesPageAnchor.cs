@@ -1,26 +1,26 @@
-using Infrastructure.Enums;
 using UI.Console.Components.Common;
+using UI.Console.Components.Factories;
 using UI.Console.Enums;
 using UI.Console.Types;
 
 namespace UI.Console.Components.GoToButtons;
 
-public class GoToGamesPageButton : BaseButton
+public class GoToGamesPageAnchor : BaseAnchor
 {
-	public GoToGamesPageButton() : base(
-		ElementId.GoToGamesPageButton,
+	public GoToGamesPageAnchor() : base(
+		ComponentId.GoToGamesPageAnchor,
 		"Go to the games page",
-		$"Type {(int)Page.Games} to go to the games page.")
+		$"Type {(int)ComponentId.GoToGamesPageAnchor} to go to the games page.",
+		ComponentsFactory.GetGoToGamesPageAnchorChildComponents())
 	{
 	}
 
-	public override ClickResult OnClick()
+	public override async Task<ComponentResult> Execute()
 	{
-		System.Console.WriteLine("Go to game page button clicked!");
+		System.Console.WriteLine("Go to games page button clicked!");
 
-		return new ClickResult
+		return new ComponentResult
 		{
-			GameDTOs = null,
 			Page = Page.Games
 		};
 	}

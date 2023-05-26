@@ -12,8 +12,8 @@ public class GridMock : Grid
 
 	public GridMock() : base(new Area(20, 20))
 	{
-		this.updateGrid();
 		base.Initialize();
+		this.updateGrid();
 	}
 
 	private void updateGrid()

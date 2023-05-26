@@ -5,9 +5,13 @@ namespace Configuration;
 
 public class Config : IConfig
 {
+	private const Env CURRENT_ENV = Env.PRD;
+
 	private const string PRD_DB_URL = "./src/Infrastructure/DB/data.json";
 	private const string TST_DB_URL = "../../../../test/Infrastructure/DB/test_data.json";
-	private const Env CURRENT_ENV = Env.TST;
+
+	private const string LIVE_CELL_ICON = "🟦";
+	private const string DEAD_CELL_ICON = "⬜️";
 
 	public static string GetDbUrl() => CURRENT_ENV switch
 	{
@@ -29,5 +33,15 @@ public class Config : IConfig
 	public static string GetTstDbUrl()
 	{
 		return TST_DB_URL;
+	}
+
+	public static string GetLiveCellIcon()
+	{
+		return LIVE_CELL_ICON;
+	}
+
+	public static string GetDeadCellIcon()
+	{
+		return DEAD_CELL_ICON;
 	}
 }

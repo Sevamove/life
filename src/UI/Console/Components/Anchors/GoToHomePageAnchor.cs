@@ -1,29 +1,27 @@
-using Infrastructure.Enums;
 using UI.Console.Components.Common;
+using UI.Console.Components.Factories;
 using UI.Console.Enums;
 using UI.Console.Types;
 
 namespace UI.Console.Components.GoToButtons;
 
-public class GoToHomePageButton : BaseButton
+public class GoToHomePageAnchor : BaseAnchor
 {
-	public GoToHomePageButton() : base(
-		ElementId.GoToHomePageButton,
+	public GoToHomePageAnchor() : base(
+		ComponentId.GoToHomePageAnchor,
 		"Go to home page",
-		$"Type {(int)Page.Home} to go to the home page.")
+		$"Type {(int)ComponentId.GoToHomePageAnchor} to go to the home page.",
+		ComponentsFactory.GetGoToHomePageAnchorChildComponents())
 	{
 	}
 
-	public override ClickResult OnClick()
+	public override async Task<ComponentResult> Execute()
 	{
 		System.Console.WriteLine("Go to home page button clicked!");
 
-		return new ClickResult
+		return new ComponentResult
 		{
-			GameDTOs = null,
 			Page = Page.Home
 		};
-
-		// Event.Invoke(Page.Home);
 	}
 }

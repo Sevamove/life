@@ -1,9 +1,9 @@
-using Infrastructure.Enums;
+using UI.Console.Enums;
 
 namespace UI.Console.Interfaces;
 
-public interface IElement// : IEvent
+public interface IElement // : IEventTarget
 {
-	public ElementId Id();
 	public void Render();
+	public ElementId GetElementId();
 }
