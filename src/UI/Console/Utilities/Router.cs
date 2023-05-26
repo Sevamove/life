@@ -1,9 +1,9 @@
 using UI.Console.Enums;
+using UI.Console.Interfaces;
 
 namespace UI.Console.Utilities;
 
-// TODO: change name to Router
-public class Router
+public class Router : IRouter
 {
 	private Page currentPage;
 
@@ -17,7 +17,7 @@ public class Router
 		this.currentPage = currentPage;
 	}
 
-	public Page GetCurrentpage()
+	public Page GetCurrentPage()
 	{
 		return this.currentPage;
 	}

@@ -1,15 +1,16 @@
-using Infrastructure.Enums;
+using UI.Console.Enums;
 using UI.Console.Interfaces;
 using UI.Console.Types;
 
 namespace UI.Console.Components.Common;
 
-public abstract class BaseButton : BaseComponent, IButton
+public abstract class BaseButton<T> : BaseComponent, IButton<T>
 {
 	internal readonly string content;
 	internal readonly string title;
 
-	public BaseButton(ElementId ButtonId, string content, string title) : base(ButtonId)
+	// TODO: too many parameters.
+	public BaseButton(ComponentId componentId, string content, string title, IComponent[] childComponents) : base(componentId, ElementId.Button, childComponents)
 	{
 		this.content = content;
 		this.title = title;
@@ -37,5 +38,5 @@ public abstract class BaseButton : BaseComponent, IButton
 		return this.title;
 	}
 
-	public abstract ClickResult OnClick();
+	public abstract void SetData(T data);
 }

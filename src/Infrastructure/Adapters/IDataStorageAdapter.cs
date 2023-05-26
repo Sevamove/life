@@ -1,5 +1,4 @@
-using Infrastructure.Entities;
-using Infrastructure.Repositories;
+using Infrastructure.Interfaces;
 
 namespace Infrastructure.Adapters;
 

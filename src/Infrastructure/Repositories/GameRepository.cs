@@ -1,5 +1,7 @@
+using Configuration;
 using Infrastructure.Adapters;
 using Infrastructure.Entities;
+using Infrastructure.Interfaces;
 
 namespace Infrastructure.Repositories;
 
@@ -7,28 +9,23 @@ public class GameRepository : IRepository<GameEntity>
 {
 	private IRepository<GameEntity> dbClient;
 
-	// public GameRepository(IRepository<GameEntity> dbClient)
-	// {
-	// 	this.dbClient = dbClient;
-	// }
-
 	public GameRepository()
 	{
-		this.dbClient = new JsonFileAdapter<GameEntity>(Config.DB_URL);
+		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrl());
 	}
 
-	public Task<GameEntity?> FindByIdAsync<GameEntity>(string id) where GameEntity : BaseEntity
+	public async Task<GameEntity?> FindByIdAsync<GameEntity>(string id) where GameEntity : BaseEntity
 	{
-		return this.dbClient.FindByIdAsync<GameEntity>(id);
+		return await this.dbClient.FindByIdAsync<GameEntity>(id);
 	}
 
-	public void SaveAllAsync(List<GameEntity> data)
+	public async Task<List<GameEntity>> SaveAllAsync(List<GameEntity> data)
 	{
-		this.dbClient.SaveAllAsync(data);
+		return await this.dbClient.SaveAllAsync(data);
 	}
 
-	public Task<List<GameEntity>?> FindAllAsync()
+	public async Task<List<GameEntity>?> FindAllAsync()
 	{
-		return this.dbClient.FindAllAsync();
+		return await this.dbClient.FindAllAsync();
 	}
 }

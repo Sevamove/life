@@ -1,6 +1,7 @@
+using UI.Console.Types;
+
 namespace UI.Console.Interfaces;
 
-public interface IPage
+public interface IPage : IComponent
 {
-	public void Render();
 }

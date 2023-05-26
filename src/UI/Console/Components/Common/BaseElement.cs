@@ -1,4 +1,4 @@
-using Infrastructure.Enums;
+using UI.Console.Enums;
 using UI.Console.Interfaces;
 
 namespace UI.Console.Components.Common;
@@ -6,16 +6,19 @@ namespace UI.Console.Components.Common;
 // https://developer.mozilla.org/en-US/docs/Web/API/Element
 public abstract class BaseElement : IElement
 {
-	public ElementId Id;
+	private readonly ElementId elementId;
 
 	// public Action<T> Event;
 
-	public BaseElement(ElementId Id)
+	public BaseElement(ElementId id)
 	{
-		this.Id = Id;
+		this.elementId = id;
 	}
 
-	// public abstract void OnClick();
+	public ElementId GetElementId()
+	{
+		return this.elementId;
+	}
 
 	public abstract void Render();
 }

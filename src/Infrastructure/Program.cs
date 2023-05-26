@@ -4,6 +4,7 @@ using Infrastructure.Entities;
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
+Console.WriteLine(Directory.GetCurrentDirectory());
 
 // var v = new JsonFileAdapter<PatternEntity>(Config.DB_URL);
 // var r = new PatternRepository(v);

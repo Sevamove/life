@@ -1,4 +1,4 @@
-using Infrastructure.DTO;
+using Domain.DTO;
 
 namespace UI.Console.Events;
 

@@ -23,7 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\life\life.csproj" />
+    <ProjectReference Include="..\src\Domain\Domain.csproj" />
+    <ProjectReference Include="..\src\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\src\Application\Application.csproj" />
+    <ProjectReference Include="..\src\Configuration\Configuration.csproj" />
+    <!-- <ProjectReference Include="..\src\UI\Console\Console.csproj" /> -->
   </ItemGroup>
 
 </Project>

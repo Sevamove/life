@@ -1,0 +1,14 @@
+using UI.Console.Enums;
+using UI.Console.Interfaces;
+
+namespace UI.Console.Components.Common;
+
+public abstract class BaseSection : BaseComponent, ISection
+{
+	public BaseSection(ComponentId componentId, IComponent[] childComponents) : base(
+		componentId,
+		ElementId.Section,
+		childComponents)
+	{
+	}
+}

@@ -1,32 +1,90 @@
-using Application;
-using Infrastructure.Enums;
-using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
-using UI.Console.Components.GoToButtons;
+using UI.Console.Converters;
+using UI.Console.Enums;
+using UI.Console.Interfaces;
 
 namespace UI.Console.Utilities;
 
 public class Searcher
 {
-	public static BaseButton GetButton(ElementId buttonId, Game game)
+	public static IComponent? GetComponent(ComponentId componentId, IComponent[] components)
 	{
-		BaseButton[] buttons = ButtonFactory.GetAllButtons(game);
+		foreach (var component in components)
+		{
+			if (component.GetComponentId() == componentId)
+			{
+				return component;
+			}
+		}
 
-		// TODO: solve bug.
-		// foreach (var button in buttons)
-		// {
-		// 	System.Console.WriteLine(button.Id);
-		// 	System.Console.WriteLine(buttonId);
-		// 	// if (button.Id == buttonId)
-		// 	// {
-		// 	// 	return button;
-		// 	// }
-		// }
+		return null;
+	}
 
-		// TODO: remove when the bug is solved.
-		return new GoToGameNewPageButton();
+	public static IPage? GetPage(ComponentId componentId, IPage[] pages)
+	{
+		foreach (var page in pages)
+		{
+			if (page.GetComponentId() == componentId)
+			{
+				return page;
+			}
+		}
 
-		// TODO: handle the exception better.
-		throw new Exception("Button not found based on the button ID.");
+		return null;
+	}
+
+	public static IInput?[] GetInputs(IComponent[] components)
+	{
+		List<IInput?> inputs = new List<IInput?>();
+
+		foreach (var component in components)
+		{
+			if (component.GetElementId() == ElementId.Input)
+			{
+				IInput? input = ComponentConverter.ConvertToInput(component);
+
+				inputs.Add(input);
+			}
+		}
+
+		return inputs.ToArray();
+	}
+
+	public static INav? GetNav(ComponentId componentId, IComponent[] components)
+	{
+		foreach (var component in components)
+		{
+			if (component.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToNav(component);
+			}
+		}
+
+		return null;
+	}
+
+	public static IAnchor? GetAnchor(ComponentId componentId, IComponent[] components)
+	{
+		foreach (var component in components)
+		{
+			if (component.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToAnchor(component);
+			}
+		}
+
+		return null;
+	}
+
+	public static IButton<T>? GetButton<T>(ComponentId componentId, IComponent[] components)
+	{
+		foreach (var component in components)
+		{
+			if (component.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToButton<T>(component);
+			}
+		}
+
+		return null;
 	}
 }
