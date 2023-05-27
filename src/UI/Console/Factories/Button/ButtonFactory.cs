@@ -10,4 +10,9 @@ public static class ButtonFactory
 	{
 		return new PostGameButton(restApi);
 	}
+
+	public static IComponent GetQuitGameButton()
+	{
+		return new QuitGameButton();
+	}
 }

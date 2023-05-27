@@ -44,6 +44,11 @@ public class App
 
 				this.localStorage.SetStorage(pageResult);
 				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+
+				if (pageResult.IsGameQuit)
+				{
+					break;
+				}
 			}
 
 			if (this.router.GetCurrentPage() == Page.Games)
@@ -55,6 +60,11 @@ public class App
 
 				this.localStorage.SetStorage(pageResult);
 				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+
+				if (pageResult.IsGameQuit)
+				{
+					break;
+				}
 			}
 
 			if (this.router.GetCurrentPage() == Page.Game_New)
@@ -66,6 +76,11 @@ public class App
 
 				this.localStorage.SetStorage(pageResult);
 				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+
+				if (pageResult.IsGameQuit)
+				{
+					break;
+				}
 			}
 
 			if (this.router.GetCurrentPage() == Page.Playground)
@@ -77,6 +92,11 @@ public class App
 
 				this.localStorage.SetStorage(pageResult);
 				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+
+				if (pageResult.IsGameQuit)
+				{
+					break;
+				}
 			}
 		}
 	}

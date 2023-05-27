@@ -8,4 +8,9 @@ public static class ButtonChildrenFactory
 	{
 		return new IComponent[] { };
 	}
+
+	public static IComponent[] GetQuitGameButtonChildren()
+	{
+		return new IComponent[] { };
+	}
 }

@@ -14,6 +14,7 @@ public record ComponentResult()
 	public ComponentId? ComponentId { get; init; } = null;
 	public bool IsGamePaused { get; init; } = false;
 	public bool IsGamePlayed { get; init; } = false;
+	public bool IsGameQuit { get; init; } = false;
 	// public InputResult? InputResult { get; init; } = null;
 	// public FormResult? FormResult { get; init; } = null;
 	// public ButtonResult? ButtonResult { get; init; } = null;
