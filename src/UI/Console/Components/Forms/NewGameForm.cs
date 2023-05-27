@@ -20,7 +20,7 @@ public class NewGameForm : BaseForm
 	{
 		System.Console.WriteLine("Hello");
 		IInput?[] inputs = Searcher.GetInputs(this.GetChildComponents());
-		IButton<IInput?[]>? postGameButton = Searcher.GetButton<IInput?[]>(ComponentId.PostGameButton, this.GetChildComponents());
+		IButton? postGameButton = Searcher.GetButton(ComponentId.PostGameButton, this.GetChildComponents());
 
 		string[] inputValues = new string[inputs.Length];
 
@@ -33,7 +33,7 @@ public class NewGameForm : BaseForm
 			inputValues[i] = input.GetValue();
 		}
 
-		postGameButton.SetData(inputs);
+		// postGameButton.SetData(inputs);
 		ComponentResult result = await postGameButton.Execute();
 
 		return result;

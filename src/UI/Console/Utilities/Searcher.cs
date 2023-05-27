@@ -75,13 +75,13 @@ public class Searcher
 		return null;
 	}
 
-	public static IButton<T>? GetButton<T>(ComponentId componentId, IComponent[] components)
+	public static IButton? GetButton(ComponentId componentId, IComponent[] components)
 	{
 		foreach (var component in components)
 		{
 			if (component.GetComponentId() == componentId)
 			{
-				return ComponentConverter.ConvertToButton<T>(component);
+				return ComponentConverter.ConvertToButton(component);
 			}
 		}
 
