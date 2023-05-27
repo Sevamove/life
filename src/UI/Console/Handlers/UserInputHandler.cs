@@ -1,25 +1,9 @@
-using UI.Console.Components.Common;
 using UI.Console.Enums;
-using UI.Console.Types;
 
 namespace UI.Console.Handlers;
 
 public class UserInputHandler
 {
-	// private readonly string userInput;
-	// private readonly BaseComponent[] components;
-
-	// public UserInputHandler(BaseComponent[] components, string userInput)
-	// {
-	// 	this.userInput = userInput;
-	// 	this.components = components;
-	// }
-
-	// public static ButtonResult HandleButton(BaseButton button)
-	// {
-	// 	return button.OnClick();
-	// }
-
 	public static ComponentId Handle(string userInput)
 	{
 		int userInputInt = -1;

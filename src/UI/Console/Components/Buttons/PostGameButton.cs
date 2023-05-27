@@ -1,16 +1,14 @@
-using Application;
 using Application.Interfaces;
 using Domain.DTO;
-using Domain.ValueObjects.Cell;
 using Infrastructure.Builders.DTO;
 using Test.Mocks;
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.Button;
 using UI.Console.Interfaces;
 using UI.Console.Types;
 
-namespace UI.Console.Components;
+namespace UI.Console.Components.Buttons;
 
 public class PostGameButton : BaseButton<IInput?[]>
 {
@@ -21,7 +19,7 @@ public class PostGameButton : BaseButton<IInput?[]>
 		ComponentId.PostGameButton,
 		"Create a new game",
 		$"Type {Page.Game_New} to create a new game.",
-		ComponentsFactory.GetPostGameButtonChildComponents())
+		ButtonChildrenFactory.GetPostGameButtonChildren())
 	{
 		this.restApi = restApi;
 	}

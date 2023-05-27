@@ -5,11 +5,11 @@ using Domain.ValueObjects.Cell;
 using Infrastructure.Builders.DTO;
 using Test.Mocks;
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.Section;
 using UI.Console.Types;
 
-namespace UI.Console.Components;
+namespace UI.Console.Components.Sections;
 
 public class GridSection : BaseSection
 {
@@ -18,7 +18,7 @@ public class GridSection : BaseSection
 
 	public GridSection(IRestApi restApi) : base(
 		ComponentId.GridSection,
-		ComponentsFactory.GetGridSectionChildComponents(restApi))
+		SectionChildrenFactory.GetGridSectionChildren(restApi))
 	{
 		this.restApi = restApi;
 		GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());

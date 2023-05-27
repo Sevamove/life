@@ -6,21 +6,6 @@ namespace UI.Console.Handlers;
 
 public class ComponentHandler
 {
-	// public static ButtonResult HandleButton(BaseButton button)
-	// {
-	// 	return button.OnClick();
-	// }
-
-	// public static async Task<ComponentResult> HandleNavBar(IComponent[] components) {}
-	// public static async Task<ComponentResult> Handle(ElementId elementId, IComponent[] components) {
-	// 	foreach (var component in components)
-	// 	{
-	// 		if (component.GetElementId() == elementId) {
-	// 			return await component.Exe
-	// 		}
-	// 	}
-	// }
-
 	public static async Task<ComponentResult> Handle(ComponentId componentId, IComponent[] components)
 	{
 		foreach (var component in components)

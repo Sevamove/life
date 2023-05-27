@@ -1,9 +1,9 @@
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.Anchor;
 using UI.Console.Types;
 
-namespace UI.Console.Components.GoToButtons;
+namespace UI.Console.Components.Anchors;
 
 public class GoToHomePageAnchor : BaseAnchor
 {
@@ -11,7 +11,7 @@ public class GoToHomePageAnchor : BaseAnchor
 		ComponentId.GoToHomePageAnchor,
 		"Go to home page",
 		$"Type {(int)ComponentId.GoToHomePageAnchor} to go to the home page.",
-		ComponentsFactory.GetGoToHomePageAnchorChildComponents())
+		AnchorChildrenFactory.GetGoToHomePageAnchorChildren())
 	{
 	}
 

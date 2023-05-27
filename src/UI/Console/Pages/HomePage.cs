@@ -1,6 +1,6 @@
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.Page;
 using UI.Console.Types;
 
 namespace UI.Console.Pages;
@@ -9,7 +9,7 @@ public class HomePage : BasePage
 {
 	public HomePage() : base(
 		ComponentId.HomePage,
-		ComponentsFactory.GetHomePageChildComponents())
+		PageChildrenFactory.GetHomePageChildren())
 	{
 	}
 
