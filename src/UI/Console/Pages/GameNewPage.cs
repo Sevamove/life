@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Page;
@@ -8,9 +7,9 @@ namespace UI.Console.Pages;
 
 public class GameNewPage : BasePage
 {
-	public GameNewPage(IRestApi restApi) : base(
+	public GameNewPage() : base(
 		ComponentId.GameNewPage,
-		PageChildrenFactory.GetGameNewPageChildren(restApi))
+		PageChildrenFactory.GetGameNewPageChildren())
 	{
 	}
 

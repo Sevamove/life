@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Page;
@@ -8,9 +7,9 @@ namespace UI.Console.Pages;
 
 public class PlaygroundPage : BasePage
 {
-	public PlaygroundPage(IRestApi restApi) : base(
+	public PlaygroundPage() : base(
 		ComponentId.PlaygroundPage,
-		PageChildrenFactory.GetPlaygroundPageChildren(restApi))
+		PageChildrenFactory.GetPlaygroundPageChildren())
 	{
 	}
 

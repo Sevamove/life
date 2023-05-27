@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Form;
@@ -10,9 +9,9 @@ namespace UI.Console.Components.Forms;
 
 public class NewGameForm : BaseForm
 {
-	public NewGameForm(IRestApi restApi) : base(
+	public NewGameForm() : base(
 		ComponentId.NewGameForm,
-		FormChildrenFactory.GetNewGameFormChildren(restApi))
+		FormChildrenFactory.GetNewGameFormChildren())
 	{
 	}
 

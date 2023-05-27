@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using UI.Console.Interfaces;
 using UI.Console.Pages;
 
@@ -11,18 +10,18 @@ public class PageFactory
 		return new HomePage();
 	}
 
-	public static IPage GetGameNewPage(IRestApi restApi)
+	public static IPage GetGameNewPage()
 	{
-		return new GameNewPage(restApi);
+		return new GameNewPage();
 	}
 
-	public static IPage GetPlaygroundPage(IRestApi restApi)
+	public static IPage GetPlaygroundPage()
 	{
-		return new PlaygroundPage(restApi);
+		return new PlaygroundPage();
 	}
 
-	public static IPage GetGamesPage(IRestApi restApi)
+	public static IPage GetGamesPage()
 	{
-		return new GamesPage(restApi);
+		return new GamesPage();
 	}
 }

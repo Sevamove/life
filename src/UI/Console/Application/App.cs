@@ -1,5 +1,3 @@
-using Application;
-using Application.Interfaces;
 using UI.Console.Builders;
 using UI.Console.Enums;
 using UI.Console.Interfaces;
@@ -10,22 +8,19 @@ namespace UI.Console.Application;
 
 public class App
 {
-	private readonly IRestApi restApi;
 	private readonly IRouter router;
 	private readonly IPage[] pages;
 	private readonly ILocalStorage localStorage;
 
 	public App()
 	{
-		this.restApi = new RestApi();
 		this.router = new Router(Page.Home);
-		this.pages = PagesBuilder.GetAllPages(this.restApi);
+		this.pages = PagesBuilder.GetAllPages();
 		this.localStorage = new LocalStorage();
 	}
 
-	public App(IRestApi restApi, IRouter router, IPage[] pages, ILocalStorage localStorage)
+	public App(IRouter router, IPage[] pages, ILocalStorage localStorage)
 	{
-		this.restApi = restApi;
 		this.router = router;
 		this.pages = pages;
 		this.localStorage = localStorage;

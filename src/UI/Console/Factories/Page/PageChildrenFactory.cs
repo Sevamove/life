@@ -13,14 +13,14 @@ public static class PageChildrenFactory
 		};
 	}
 
-	public static IComponent[] GetGamesPageChildren(IRestApi restApi)
+	public static IComponent[] GetGamesPageChildren()
 	{
 		return new IComponent[] {
 			new GamesNavBar()
 		};
 	}
 
-	public static IComponent[] GetPlaygroundPageChildren(IRestApi restApi)
+	public static IComponent[] GetPlaygroundPageChildren()
 	{
 		return new IComponent[] {
 			new PlaygroundNavBar()
@@ -28,7 +28,7 @@ public static class PageChildrenFactory
 		};
 	}
 
-	public static IComponent[] GetGameNewPageChildren(IRestApi restApi)
+	public static IComponent[] GetGameNewPageChildren()
 	{
 		return new IComponent[] {
 			new GameNewNavBar()

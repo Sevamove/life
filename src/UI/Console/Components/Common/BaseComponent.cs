@@ -1,3 +1,5 @@
+using Application;
+using Application.Interfaces;
 using UI.Console.Enums;
 using UI.Console.Handlers;
 using UI.Console.Helpers;
@@ -9,6 +11,7 @@ namespace UI.Console.Components.Common;
 public abstract class BaseComponent : BaseElement, IComponent
 {
 	internal readonly IComponentHelper componentHelper;
+	internal readonly IRestApi restApi;
 
 	private readonly ComponentId componentId;
 	private readonly IComponent[] childComponents;
@@ -19,6 +22,7 @@ public abstract class BaseComponent : BaseElement, IComponent
 		this.childComponents = childComponents;
 
 		this.componentHelper = new ComponentHelper(this.childComponents);
+		this.restApi = new RestApi();
 	}
 
 	public ComponentId GetComponentId()

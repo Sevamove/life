@@ -1,27 +1,23 @@
-using Application.Interfaces;
 using Domain.DTO;
 using Infrastructure.Builders.DTO;
 using Test.Mocks;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Button;
-using UI.Console.Interfaces;
 using UI.Console.Types;
 
 namespace UI.Console.Components.Buttons;
 
 public class PostGameButton : BaseButton
 {
-	private readonly IRestApi restApi;
 	private GameDTO game;
 
-	public PostGameButton(IRestApi restApi) : base(
+	public PostGameButton() : base(
 		ComponentId.PostGameButton,
 		"Create a new game",
 		$"Type {Page.Game_New} to create a new game.",
 		ButtonChildrenFactory.GetPostGameButtonChildren())
 	{
-		this.restApi = restApi;
 	}
 
 	public override async Task<ComponentResult> Execute()

@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using Configuration;
 using Domain.DTO;
 using Domain.ValueObjects.Cell;
@@ -13,14 +12,12 @@ namespace UI.Console.Components.Sections;
 
 public class GridSection : BaseSection
 {
-	private readonly IRestApi restApi;
 	private GameDTO game;
 
-	public GridSection(IRestApi restApi) : base(
+	public GridSection() : base(
 		ComponentId.GridSection,
-		SectionChildrenFactory.GetGridSectionChildren(restApi))
+		SectionChildrenFactory.GetGridSectionChildren())
 	{
-		this.restApi = restApi;
 		GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());
 		this.game = gamea;
 	}
