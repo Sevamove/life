@@ -1,7 +1,7 @@
 using Application.Interfaces;
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.Form;
 using UI.Console.Interfaces;
 using UI.Console.Types;
 using UI.Console.Utilities;
@@ -12,7 +12,7 @@ public class NewGameForm : BaseForm
 {
 	public NewGameForm(IRestApi restApi) : base(
 		ComponentId.NewGameForm,
-		ComponentsFactory.GetNewGameFormChildComponents(restApi))
+		FormChildrenFactory.GetNewGameFormChildren(restApi))
 	{
 	}
 

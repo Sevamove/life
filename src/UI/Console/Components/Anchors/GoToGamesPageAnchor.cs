@@ -1,9 +1,9 @@
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.Anchor;
 using UI.Console.Types;
 
-namespace UI.Console.Components.GoToButtons;
+namespace UI.Console.Components.Anchors;
 
 public class GoToGamesPageAnchor : BaseAnchor
 {
@@ -11,7 +11,7 @@ public class GoToGamesPageAnchor : BaseAnchor
 		ComponentId.GoToGamesPageAnchor,
 		"Go to the games page",
 		$"Type {(int)ComponentId.GoToGamesPageAnchor} to go to the games page.",
-		ComponentsFactory.GetGoToGamesPageAnchorChildComponents())
+		AnchorChildrenFactory.GetGoToGamesPageAnchorChildren())
 	{
 	}
 

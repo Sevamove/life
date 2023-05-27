@@ -1,6 +1,6 @@
 using UI.Console.Components.Common;
-using UI.Console.Components.Factories;
 using UI.Console.Enums;
+using UI.Console.Factories.NavBar;
 using UI.Console.Types;
 
 namespace UI.Console.Components.NavBars;
@@ -9,7 +9,7 @@ public class PlaygroundNavBar : BaseNav
 {
 	public PlaygroundNavBar() : base(
 		ComponentId.PlaygroundNavBar,
-		ComponentsFactory.GetPlaygroundNavBarChildComponents())
+		NavBarChildrenFactory.GetPlaygroundNavBarChildren())
 	{
 	}
 

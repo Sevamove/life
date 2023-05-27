@@ -1,14 +1,4 @@
-﻿using Application;
-using Domain.DTO;
-using UI.Console.Application;
-using UI.Console.Components.Common;
-using UI.Console.Enums;
-using UI.Console.Events;
-using UI.Console.Handlers;
-using UI.Console.Listeners;
-using UI.Console.Pages;
-using UI.Console.Types;
-using UI.Console.Utilities;
+﻿using UI.Console.Application;
 
 public class Program
 {
