@@ -5,6 +5,16 @@ namespace UI.Console.Factories.Page;
 
 public class PageFactory
 {
+	public static IPage[] GetAllPages()
+	{
+		return new IPage[] {
+			GetHomePage(),
+			GetGameNewPage(),
+			GetPlaygroundPage(),
+			GetGamesPage()
+		};
+	}
+
 	public static IPage GetHomePage()
 	{
 		return new HomePage();

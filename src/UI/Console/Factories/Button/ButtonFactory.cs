@@ -5,6 +5,14 @@ namespace UI.Console.Factories.Button;
 
 public static class ButtonFactory
 {
+	public static IComponent[] GetAllButtons()
+	{
+		return new IComponent[] {
+			GetPostGameButton(),
+			GetQuitGameButton()
+		};
+	}
+
 	public static IComponent GetPostGameButton()
 	{
 		return new PostGameButton();
