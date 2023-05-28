@@ -20,9 +20,8 @@ public class GoToGameNewPageAnchor : BaseAnchor
 	{
 		System.Console.WriteLine("Go to game new page button clicked!");
 
-		return new ComponentResult
-		{
-			Page = Page.Game_New
-		};
+		this.componentStorage.Router.Push(Page.Game_New);
+
+		return await base.Execute();
 	}
 }

@@ -20,8 +20,6 @@ public class HomePage : BasePage
 
 	public async override Task<ComponentResult> Execute()
 	{
-		ComponentResult navBarResult = await this.componentHelper.Execute(ComponentId.HomeNavBar);
-
-		return navBarResult;
+		return await this.componentHelper.Execute(ComponentId.HomeNavBar);
 	}
 }

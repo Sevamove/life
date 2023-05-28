@@ -38,7 +38,7 @@ initialize-new-project project_name:
 add-new-project project_path:
     dotnet sln add {{project_path}}
 
-run-project project_path:
+run-project project_path="src/UI/Console":
     dotnet run --project {{project_path}}
 
 debug project_path:

@@ -19,9 +19,8 @@ public class GoToPlaygroundPageAnchor : BaseAnchor
 	{
 		System.Console.WriteLine("Go to playground page button clicked!");
 
-		return new ComponentResult
-		{
-			Page = Page.Playground
-		};
+		this.componentStorage.Router.Push(Page.Playground);
+
+		return await base.Execute();
 	}
 }

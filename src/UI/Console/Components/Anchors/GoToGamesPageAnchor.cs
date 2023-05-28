@@ -19,9 +19,8 @@ public class GoToGamesPageAnchor : BaseAnchor
 	{
 		System.Console.WriteLine("Go to games page button clicked!");
 
-		return new ComponentResult
-		{
-			Page = Page.Games
-		};
+		this.componentStorage.Router.Push(Page.Games);
+
+		return await base.Execute();
 	}
 }

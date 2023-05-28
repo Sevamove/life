@@ -12,26 +12,25 @@ namespace UI.Console.Components.Sections;
 
 public class GridSection : BaseSection
 {
-	private GameDTO game;
-
 	public GridSection() : base(
 		ComponentId.GridSection,
 		SectionChildrenFactory.GetGridSectionChildren())
 	{
-		GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());
-		this.game = gamea;
+		// GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());
+		// this.game = gamea;
 	}
 
 	public override void Render()
 	{
 		System.Console.WriteLine("Grid rendered.");
+		GameDTO game = this.componentStorage.Game;
 		AreaDTO area = game.Grid.Area;
 
 		for (int x = 0; x < area.Width; x++)
 		{
 			for (int y = 0; y < area.Height; y++)
 			{
-				CellDTO cell = this.game.Grid.Cells[x, y];
+				CellDTO cell = game.Grid.Cells[x, y];
 
 				bool isAliveCell = cell.State == (int)State.LIVE;
 
@@ -44,11 +43,8 @@ public class GridSection : BaseSection
 
 	public override async Task<ComponentResult> Execute()
 	{
-		this.game = await this.restApi.GetGrid(this.game);
+		this.componentStorage.Game = await this.restApi.GetGrid(this.componentStorage.Game);
 
-		return new ComponentResult
-		{
-			Game = this.game
-		};
+		return await base.Execute();
 	}
 }

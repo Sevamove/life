@@ -33,10 +33,12 @@ public class ComponentHelper : IComponentHelper
 
 		System.Console.WriteLine("Invalid user input provided");
 
-		return new ComponentResult
-		{
-			ComponentId = ComponentId.InvalidComponentId,
-			Page = Page.Home
-		};
+		return new ComponentResult { };
+
+		// return new Storage
+		// {
+		// 	ComponentId = ComponentId.InvalidComponentId,
+		// 	Page = Page.Home
+		// };
 	}
 }

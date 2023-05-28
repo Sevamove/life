@@ -18,7 +18,8 @@ public class JsonFileAdapter<T> : IDataStorageAdapter<T>
 		this.validateFileExists();
 
 		// Load the existing JSON data from the file.
-		List<T>? jsonData = await this.FindAllAsync();
+		// TODO: fix!!!;
+		List<T>? jsonData = null; //await this.FindAllAsync();
 
 		// Create a new array of items if not already exists.
 		if (jsonData == null)

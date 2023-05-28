@@ -50,7 +50,7 @@ public class Program
 
 // 						if (clickResult.Page != null)
 // 						{
-// 							router.SetCurrentPage((Page)clickResult.Page);
+// 							router.Push((Page)clickResult.Page);
 // 							break;
 // 						}
 // 					}
@@ -68,14 +68,14 @@ public class Program
 
 // 						if (clickResult.Page != null)
 // 						{
-// 							router.SetCurrentPage((Page)clickResult.Page);
+// 							router.Push((Page)clickResult.Page);
 // 							break;
 // 						}
 // 					}
 // 					break;
 // 				// case Page.Games:
 // 				// 	gamesPage.Render();
-// 				// 	router.SetCurrentPage(Page.Games);
+// 				// 	router.Push(Page.Games);
 // 				// 	break;
 // 				case Page.Playground:
 // 					while (true)
@@ -90,7 +90,7 @@ public class Program
 
 // 						if (clickResult.Page != null)
 // 						{
-// 							router.SetCurrentPage((Page)clickResult.Page);
+// 							router.Push((Page)clickResult.Page);
 // 							break;
 // 						}
 // 					}
@@ -125,7 +125,7 @@ public class Program
 
 // // 		while (true)
 // // 		{
-// // 			// switch (pageEventSubscriber.GetCurrentPage())
+// // 			// switch (pageEventSubscriber.Pull())
 // // 			switch (route.GetCurrentpage())
 // // 			{
 // // 				case Page.Home:
@@ -152,7 +152,7 @@ public class Program
 // // 					// 		// 	(value) => value.Href() == (Page)chosenOptionInt);
 
 // // 					// 		// // button?.OnClick();
-// // 					// 		// route.SetCurrentPage((Page)newCurrentPage);
+// // 					// 		// route.Push((Page)newCurrentPage);
 // // 					// 		break;
 // // 					// 	}
 
@@ -231,7 +231,7 @@ public class Program
 
 
 
-// // 		// Page currentPage = pageEventSubscriber.GetCurrentPage();
+// // 		// Page currentPage = pageEventSubscriber.Pull();
 // // 		// System.Console.WriteLine("Current page is " + currentPage);
 // // 	}
 // // }

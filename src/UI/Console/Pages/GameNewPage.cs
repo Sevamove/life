@@ -16,12 +16,12 @@ public class GameNewPage : BasePage
 	public override void Render()
 	{
 		this.componentHelper.Render(ComponentId.GameNewNavBar);
+		this.componentHelper.Render(ComponentId.NewGameForm);
 	}
 
 	public async override Task<ComponentResult> Execute()
 	{
-		ComponentResult navBarResult = await this.componentHelper.Execute(ComponentId.GameNewNavBar);
-
-		return navBarResult;
+		// Storage navBarResult = await this.componentHelper.Execute(ComponentId.GameNewNavBar);
+		return await this.componentHelper.Execute(ComponentId.NewGameForm);
 	}
 }

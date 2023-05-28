@@ -6,29 +6,29 @@ namespace UI.Console.Handlers;
 
 public class ComponentHandler
 {
-	public static async Task<ComponentResult> Handle(ComponentId componentId, IComponent[] components)
-	{
-		foreach (var component in components)
-		{
-			if (component.GetComponentId() == componentId)
-			{
-				return await component.Execute(componentId);
-			}
+	// public static async Task<ComponentResult> Handle(ComponentId componentId, IComponent[] components)
+	// {
+	// 	foreach (var component in components)
+	// 	{
+	// 		if (component.GetComponentId() == componentId)
+	// 		{
+	// 			return await component.Execute(componentId);
+	// 		}
 
-			var childComponents = component.GetChildComponents();
+	// 		var childComponents = component.GetChildComponents();
 
-			if (childComponents.Length > 0)
-			{
-				var result = await Handle(componentId, childComponents);
+	// 		if (childComponents.Length > 0)
+	// 		{
+	// 			var result = await Handle(componentId, childComponents);
 
-				if (result != null)
-				{
-					return result;
-				}
-			}
-		}
+	// 			if (result != null)
+	// 			{
+	// 				return result;
+	// 			}
+	// 		}
+	// 	}
 
-		// return null;
-		throw new Exception("Exception occurred.");
-	}
+	// 	// return null;
+	// 	throw new Exception("Exception occurred.");
+	// }
 }

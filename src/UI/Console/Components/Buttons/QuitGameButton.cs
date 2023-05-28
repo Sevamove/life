@@ -20,9 +20,11 @@ public class QuitGameButton : BaseButton
 	{
 		System.Console.WriteLine("Quit game button clicked!");
 
+		this.componentStorage.IsGameQuit = true;
+
 		return new ComponentResult
 		{
-			IsGameQuit = true
+			Storage = this.componentStorage
 		};
 	}
 }

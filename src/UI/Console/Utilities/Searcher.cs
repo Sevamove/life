@@ -1,5 +1,7 @@
 using UI.Console.Converters;
 using UI.Console.Enums;
+using UI.Console.Factories.Anchor;
+using UI.Console.Factories.NavBar;
 using UI.Console.Interfaces;
 
 namespace UI.Console.Utilities;
@@ -18,6 +20,7 @@ public class Searcher
 
 		return null;
 	}
+
 
 	public static IPage? GetPage(ComponentId componentId, IPage[] pages)
 	{
@@ -62,13 +65,62 @@ public class Searcher
 		return null;
 	}
 
-	public static IAnchor? GetAnchor(ComponentId componentId, IComponent[] components)
+	public static INav? GetNav(ComponentId componentId)
 	{
-		foreach (var component in components)
+		INav[] navBars = NavBarFactory.GetAllNavBars();
+
+		foreach (var navBar in navBars)
 		{
-			if (component.GetComponentId() == componentId)
+			if (navBar.GetComponentId() == componentId)
 			{
-				return ComponentConverter.ConvertToAnchor(component);
+				return navBar;
+			}
+		}
+
+		return null;
+	}
+
+	public static INav? GetNav(string componentIdString)
+	{
+		INav[] navBars = NavBarFactory.GetAllNavBars();
+		ComponentId componentId = (ComponentId)EnumConverter.ConvertToComponentId(componentIdString);
+
+		foreach (var navBar in navBars)
+		{
+			if (navBar.GetComponentId() == componentId)
+			{
+				return navBar;
+			}
+		}
+
+		return null;
+	}
+
+	public static IAnchor? GetAnchor(string componentIdString)
+	{
+		IComponent[] anchors = AnchorFactory.GetAllAnchors();
+		ComponentId componentId = (ComponentId)EnumConverter.ConvertToComponentId(componentIdString);
+
+		foreach (var anchor in anchors)
+		{
+			if (anchor.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToAnchor(anchor);
+			}
+		}
+
+		return null;
+	}
+
+	public static IAnchor? GetAnchor(ComponentId componentId)
+	{
+		IComponent[] anchors = AnchorFactory.GetAllAnchors();
+
+		foreach (var anchor in anchors)
+		{
+			if (anchor.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToAnchor(anchor);
 			}
 		}
 

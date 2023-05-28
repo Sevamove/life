@@ -1,7 +1,6 @@
 using Application;
 using Application.Interfaces;
 using UI.Console.Enums;
-using UI.Console.Handlers;
 using UI.Console.Helpers;
 using UI.Console.Interfaces;
 using UI.Console.Types;
@@ -12,9 +11,10 @@ public abstract class BaseComponent : BaseElement, IComponent
 {
 	internal readonly IComponentHelper componentHelper;
 	internal readonly IRestApi restApi;
+	internal readonly IComponent[] childComponents;
+	internal Storage componentStorage;
 
 	private readonly ComponentId componentId;
-	private readonly IComponent[] childComponents;
 
 	protected BaseComponent(ComponentId componentId, ElementId elementId, IComponent[] childComponents) : base(elementId)
 	{
@@ -23,6 +23,7 @@ public abstract class BaseComponent : BaseElement, IComponent
 
 		this.componentHelper = new ComponentHelper(this.childComponents);
 		this.restApi = new RestApi();
+		this.componentStorage = new Storage();
 	}
 
 	public ComponentId GetComponentId()
@@ -35,24 +36,29 @@ public abstract class BaseComponent : BaseElement, IComponent
 		return this.childComponents;
 	}
 
-	public override void Render()
+	public void SetComponentStorage(Storage storage)
 	{
-		foreach (var component in this.childComponents)
-		{
-			component.Render();
-		}
+		this.componentStorage = storage;
 	}
 
-	public async virtual Task<ComponentResult> Execute(ComponentId childComponentId)
+	public Storage GetComponentStorage()
 	{
-		// return await ComponentHandler.Handle(childComponentId, this.childComponents);
-		if (this.GetComponentId() == componentId)
-		{
-			return await this.Execute();
-		}
-
-		return await ComponentHandler.Handle(componentId, this.GetChildComponents());
+		return this.componentStorage;
 	}
 
-	public abstract Task<ComponentResult> Execute();
+	public async virtual Task<ComponentResult> Execute()
+	{
+		return new ComponentResult
+		{
+			Storage = this.componentStorage
+		};
+	}
+
+	internal void updateComponentStorages()
+	{
+		foreach (var childComponent in this.childComponents)
+		{
+			childComponent.SetComponentStorage(this.componentStorage);
+		}
+	}
 }

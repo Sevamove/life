@@ -19,9 +19,8 @@ public class GoToHomePageAnchor : BaseAnchor
 	{
 		System.Console.WriteLine("Go to home page button clicked!");
 
-		return new ComponentResult
-		{
-			Page = Page.Home
-		};
+		this.componentStorage.Router.Push(Page.Home);
+
+		return await base.Execute();
 	}
 }
