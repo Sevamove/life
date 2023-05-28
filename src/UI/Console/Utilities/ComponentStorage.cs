@@ -3,21 +3,21 @@ using UI.Console.Types;
 
 namespace UI.Console.Utilities;
 
-public class LocalStorage : ILocalStorage
+public class ComponentStorage : IComponentStorage
 {
 	private Storage storage;
 
-	public LocalStorage()
+	public ComponentStorage()
 	{
 		this.storage = new Storage();
 	}
 
-	public void SetLocalStorage(Storage storage)
+	public void SetComponentStorage(Storage storage)
 	{
 		this.storage = storage;
 	}
 
-	public Storage GetLocalStorage()
+	public Storage GetComponentStorage()
 	{
 		return this.storage;
 	}

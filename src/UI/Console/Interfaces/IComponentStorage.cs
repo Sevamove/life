@@ -2,10 +2,10 @@ using UI.Console.Types;
 
 namespace UI.Console.Interfaces;
 
-public interface ILocalStorage
+public interface IComponentStorage
 {
-	public void SetLocalStorage(Storage storage);
-	public Storage GetLocalStorage();
+	public void SetComponentStorage(Storage storage);
+	public Storage GetComponentStorage();
 	// public void SetGame(GameDTO game);
 	// public GameDTO? Game();
 }

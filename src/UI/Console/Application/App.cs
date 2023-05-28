@@ -1,5 +1,5 @@
-using UI.Console.Builders;
 using UI.Console.Enums;
+using UI.Console.Factories.Page;
 using UI.Console.Interfaces;
 using UI.Console.Types;
 using UI.Console.Utilities;
@@ -8,20 +8,17 @@ namespace UI.Console.Application;
 
 public class App
 {
-	private readonly IRouter router;
 	private readonly IPage[] pages;
 	private readonly ILocalStorage localStorage;
 
 	public App()
 	{
-		this.router = new Router(Page.Home);
-		this.pages = PagesBuilder.GetAllPages();
+		this.pages = PageFactory.GetAllPages();
 		this.localStorage = new LocalStorage();
 	}
 
-	public App(IRouter router, IPage[] pages, ILocalStorage localStorage)
+	public App(IPage[] pages, ILocalStorage localStorage)
 	{
-		this.router = router;
 		this.pages = pages;
 		this.localStorage = localStorage;
 	}
@@ -30,65 +27,65 @@ public class App
 	{
 		while (true)
 		{
-			if (this.router.GetCurrentPage() == Page.Home)
+			if (this.localStorage.GetLocalStorage().Router.Pull() == Page.Home)
 			{
 				IPage? pageRef = Searcher.GetPage(ComponentId.HomePage, this.pages);
+				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
-				this.localStorage.SetStorage(pageResult);
-				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+				this.localStorage.SetLocalStorage(pageResult.Storage);
 
-				if (pageResult.IsGameQuit)
+				if (this.localStorage.GetLocalStorage().IsGameQuit)
 				{
 					break;
 				}
 			}
 
-			if (this.router.GetCurrentPage() == Page.Games)
+			if (this.localStorage.GetLocalStorage().Router.Pull() == Page.Games)
 			{
 				IPage? pageRef = Searcher.GetPage(ComponentId.GamesPage, this.pages);
+				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
-				this.localStorage.SetStorage(pageResult);
-				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+				this.localStorage.SetLocalStorage(pageResult.Storage);
 
-				if (pageResult.IsGameQuit)
+				if (this.localStorage.GetLocalStorage().IsGameQuit)
 				{
 					break;
 				}
 			}
 
-			if (this.router.GetCurrentPage() == Page.Game_New)
+			if (this.localStorage.GetLocalStorage().Router.Pull() == Page.Game_New)
 			{
 				IPage? pageRef = Searcher.GetPage(ComponentId.GameNewPage, this.pages);
+				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
-				this.localStorage.SetStorage(pageResult);
-				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+				this.localStorage.SetLocalStorage(pageResult.Storage);
 
-				if (pageResult.IsGameQuit)
+				if (this.localStorage.GetLocalStorage().IsGameQuit)
 				{
 					break;
 				}
 			}
 
-			if (this.router.GetCurrentPage() == Page.Playground)
+			if (this.localStorage.GetLocalStorage().Router.Pull() == Page.Playground)
 			{
 				IPage? pageRef = Searcher.GetPage(ComponentId.PlaygroundPage, this.pages);
+				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
-				this.localStorage.SetStorage(pageResult);
-				this.router.SetCurrentPage(pageResult.Page.GetValueOrDefault());
+				this.localStorage.SetLocalStorage(pageResult.Storage);
 
-				if (pageResult.IsGameQuit)
+				if (this.localStorage.GetLocalStorage().IsGameQuit)
 				{
 					break;
 				}

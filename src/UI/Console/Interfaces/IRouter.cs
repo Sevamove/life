@@ -4,6 +4,6 @@ namespace UI.Console.Interfaces;
 
 public interface IRouter
 {
-	public void SetCurrentPage(Page page);
-	public Page GetCurrentPage();
+	public void Push(Page page);
+	public Page Pull();
 }
