@@ -7,6 +7,7 @@ public enum Page
 	Games = 1,
 	Game_New = 2,
 	Playground = 3,
+	NotFound = 404
 	// LoadGrid = 2,
 	// SaveGrid = 3,
 	// DeleteGrid = 4,

@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Page;
@@ -8,21 +7,22 @@ namespace UI.Console.Pages;
 
 public class GamesPage : BasePage
 {
-	public GamesPage(IRestApi restApi) : base(
+	public GamesPage() : base(
 		ComponentId.GamesPage,
-		PageChildrenFactory.GetGamesPageChildren(restApi))
+		PageChildrenFactory.GetGamesPageChildren())
 	{
 	}
 
 	public override void Render()
 	{
-		this.componentHelper.Render(ComponentId.GamesNavBar);
+		base.Render();
+		this.componentHelper.Render(ComponentId.GamesStackedList);
 	}
 
 	public async override Task<ComponentResult> Execute()
 	{
-		ComponentResult navBarResult = await this.componentHelper.Execute(ComponentId.GamesNavBar);
-
-		return navBarResult;
+		// await this.componentHelper.Execute(ComponentId.GamesStackedList);
+		// this.componentHelper.Render(ComponentId.GamesStackedList);
+		return await this.componentHelper.Execute(ComponentId.GamesStackedList);
 	}
 }

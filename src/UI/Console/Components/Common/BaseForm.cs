@@ -6,40 +6,41 @@ namespace UI.Console.Components.Common;
 
 public abstract class BaseForm : BaseComponent, IForm
 {
-	public BaseForm(ComponentId componentId, IComponent[] childComponents) : base(
+	public BaseForm(ComponentId componentId, IComponent[] childComponents, int renderDelay = Timeout.Infinite) : base(
 		componentId,
 		ElementId.Form,
-		childComponents)
+		childComponents,
+		renderDelay)
 	{
 	}
 
-	public void SetInputValues()
-	{
-		IInput?[] inputs = Searcher.GetInputs(this.GetChildComponents());
+	// public void SetInputValues()
+	// {
+	// 	IInput?[] inputs = Searcher.GetInputs(this.GetChildComponents());
 
-		if (inputs == null)
-		{
-			throw new Exception("Form does not contain input components");
-		}
+	// 	if (inputs == null)
+	// 	{
+	// 		throw new Exception("Form does not contain input components");
+	// 	}
 
-		for (int i = 0; i < inputs.Length; i++)
-		{
-			inputs[i].Render();
-			inputs[i].SetValue();
-		}
-	}
+	// 	for (int i = 0; i < inputs.Length; i++)
+	// 	{
+	// 		inputs[i].Render();
+	// 		inputs[i].Execute();
+	// 	}
+	// }
 
-	public string[] GetInputValues()
-	{
-		IInput?[] inputs = Searcher.GetInputs(this.GetChildComponents());
+	// public string[] GetInputValues()
+	// {
+	// 	IInput?[] inputs = Searcher.GetInputs(this.GetChildComponents());
 
-		string[] inputValues = new string[inputs.Length];
+	// 	string[] inputValues = new string[inputs.Length];
 
-		for (int i = 0; i < inputs.Length; i++)
-		{
-			inputValues[i] = inputs[i].GetValue();
-		}
+	// 	for (int i = 0; i < inputs.Length; i++)
+	// 	{
+	// 		inputValues[i] = inputs[i].GetValue();
+	// 	}
 
-		return inputValues;
-	}
+	// 	return inputValues;
+	// }
 }

@@ -1,4 +1,3 @@
-using Domain.DTO;
 using UI.Console.Interfaces;
 using UI.Console.Types;
 
@@ -6,25 +5,19 @@ namespace UI.Console.Utilities;
 
 public class LocalStorage : ILocalStorage
 {
-	private ComponentResult? storage;
-	// private GameDTO? game;
+	private Storage storage;
 
-	// public GameDTO? Game()
-	// {
-	// 	return this.game;
-	// }
+	public LocalStorage()
+	{
+		this.storage = new Storage();
+	}
 
-	// public void SetGame(GameDTO game)
-	// {
-	// 	this.game = game;
-	// }
-
-	public void SetStorage(ComponentResult storage)
+	public void SetLocalStorage(Storage storage)
 	{
 		this.storage = storage;
 	}
 
-	public ComponentResult? Storage()
+	public Storage GetLocalStorage()
 	{
 		return this.storage;
 	}

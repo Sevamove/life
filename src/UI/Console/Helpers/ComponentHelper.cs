@@ -21,6 +21,13 @@ public class ComponentHelper : IComponentHelper
 		component.Render();
 	}
 
+	public void Render(ElementId elementId)
+	{
+		IElement? element = Searcher.GetElement(elementId, this.childComponents);
+
+		element.Render();
+	}
+
 	// TODO: technical debt. Refactor!
 	public async Task<ComponentResult> Execute(ComponentId componentId)
 	{
@@ -31,12 +38,14 @@ public class ComponentHelper : IComponentHelper
 			return await component.Execute();
 		}
 
-		System.Console.WriteLine("Invalid user input provided");
+		System.Console.WriteLine("Invalid user input provided in " + componentId);
 
-		return new ComponentResult
-		{
-			ComponentId = ComponentId.InvalidComponentId,
-			Page = Page.Home
-		};
+		return new ComponentResult { };
+
+		// return new Storage
+		// {
+		// 	ComponentId = ComponentId.InvalidComponentId,
+		// 	Page = Page.Home
+		// };
 	}
 }

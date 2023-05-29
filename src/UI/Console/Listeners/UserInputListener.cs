@@ -1,56 +1,87 @@
-using UI.Console.Components.Common;
-using UI.Console.Enums;
-
 namespace UI.Console.Listeners;
+
+// public class UserInputListener
+// {
+// 	private const int ONE_DAY_IN_SECONDS = 86400;
+
+// 	private string userInput = String.Empty;
+
+// 	public string? Listen(int seconds = ONE_DAY_IN_SECONDS)
+// 	{
+// 		var listenForInputThread = new Thread(listenForInput);
+
+// 		listenForInputThread.Start();
+
+// 		if (listenForInputThread.Join(TimeSpan.FromSeconds(seconds)))
+// 		{
+// 			System.Console.WriteLine("HERERER");
+// 			return userInput;
+// 		}
+// 		else
+// 		{
+// 			System.Console.WriteLine("EMPTTYTYTYTYYTYTY");
+// 			return String.Empty;
+// 		}
+// 	}
+
+// 	public string GetUserInput()
+// 	{
+// 		System.Console.WriteLine("USER INPUT VALUEEEEEEEEEE: " + userInput);
+// 		return this.userInput;
+// 	}
+
+// 	private void listenForInput()
+// 	{
+// 		this.userInput = System.Console.ReadLine();
+// 		System.Console.WriteLine("USER INPUT TTTT : " + this.userInput);
+// 	}
+// }
 
 public class UserInputListener
 {
-	private readonly BaseComponent[] components;
+	private static Thread inputThread;
+	private static AutoResetEvent getInput, gotInput;
+	private static string input;
 
-	public UserInputListener(BaseComponent[] components)
+	static UserInputListener()
 	{
-		this.components = components;
+		getInput = new AutoResetEvent(false);
+		gotInput = new AutoResetEvent(false);
+		inputThread = new Thread(reader);
+		inputThread.IsBackground = true;
+		inputThread.Start();
 	}
 
-	// TODO: create an apart class UserInputValidator.
-	public static string? Listen()
+	private static void reader()
 	{
-		string? userInput = System.Console.ReadLine();
-
-		// if (userInput != null && userInput != "")
-		foreach (ComponentId componentId in Enum.GetValues(typeof(ComponentId)))
+		while (true)
 		{
-			int parsedInput = -1;
-
-			bool success = int.TryParse(userInput, out parsedInput);
-
-			if (!success)
-			{
-				System.Console.WriteLine("Invalid user input provided");
-				return ((int)ComponentId.InvalidComponentId).ToString();
-			}
-
-			if ((int)componentId == parsedInput)
-			{
-				return userInput;
-			}
+			getInput.WaitOne();
+			input = System.Console.ReadLine();
+			gotInput.Set();
 		}
-
-		return ((int)ComponentId.HomePage).ToString();
 	}
 
-	// // TODO: do we need this method?
-	// public static string Listen(BaseComponent[] components)
-	// {
-	// 	string? userInput = System.Console.ReadLine();
+	// omit the parameter to read a line without a timeout
+	public static string Listen(int timeOutMillisecs = Timeout.Infinite)
+	{
+		getInput.Set();
+		bool success = gotInput.WaitOne(timeOutMillisecs);
+		if (success)
+			return input;
+		else
+			return String.Empty;
+		//throw new TimeoutException("User did not provide input within the timelimit.");
+	}
 
-	// 	if (userInput != null && userInput != "")
-	// 	{
-	// 		return userInput;
-	// 	}
-
-	// 	// TODO: handle exception better.
-	// 	throw new Exception("Invalid user input provided.");
-	// }
-
+	public static bool TryReadLine(out string line, int timeOutMillisecs = Timeout.Infinite)
+	{
+		getInput.Set();
+		bool success = gotInput.WaitOne(timeOutMillisecs);
+		if (success)
+			line = input;
+		else
+			line = null;
+		return success;
+	}
 }

@@ -4,8 +4,8 @@ namespace Infrastructure.Entities;
 
 public record GameEntity : BaseEntity
 {
-	[JsonPropertyName("name")]
+	[JsonPropertyName("Name")]
 	public required string Name { get; init; }
-	[JsonPropertyName("grid")]
+	[JsonPropertyName("Grid")]
 	public required GridEntity Grid { get; init; }
 }

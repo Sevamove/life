@@ -19,8 +19,8 @@ public class ComponentConverter
 		return component as INav;
 	}
 
-	public static IButton<T>? ConvertToButton<T>(IComponent component)
+	public static IButton? ConvertToButton(IComponent component)
 	{
-		return component as IButton<T>;
+		return component as IButton;
 	}
 }

@@ -4,8 +4,8 @@ namespace Infrastructure.Entities;
 
 public record AreaEntity
 {
-	[JsonPropertyName("width")]
+	[JsonPropertyName("Width")]
 	public required int Width { get; init; }
-	[JsonPropertyName("height")]
+	[JsonPropertyName("Height")]
 	public required int Height { get; init; }
 }

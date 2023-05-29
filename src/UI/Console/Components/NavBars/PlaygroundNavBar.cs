@@ -17,9 +17,4 @@ public class PlaygroundNavBar : BaseNav
 	{
 		base.Render();
 	}
-
-	public async override Task<ComponentResult> Execute()
-	{
-		return await base.Execute();
-	}
 }

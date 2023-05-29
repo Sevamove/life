@@ -1,5 +1,8 @@
 using UI.Console.Converters;
 using UI.Console.Enums;
+using UI.Console.Factories.Anchor;
+using UI.Console.Factories.Button;
+using UI.Console.Factories.NavBar;
 using UI.Console.Interfaces;
 
 namespace UI.Console.Utilities;
@@ -18,6 +21,20 @@ public class Searcher
 
 		return null;
 	}
+
+	public static IElement? GetElement(ElementId elementId, IComponent[] components)
+	{
+		foreach (var component in components)
+		{
+			if (component.GetElementId() == elementId)
+			{
+				return component;
+			}
+		}
+
+		return null;
+	}
+
 
 	public static IPage? GetPage(ComponentId componentId, IPage[] pages)
 	{
@@ -62,26 +79,106 @@ public class Searcher
 		return null;
 	}
 
-	public static IAnchor? GetAnchor(ComponentId componentId, IComponent[] components)
+	public static INav? GetNav(ComponentId componentId)
 	{
-		foreach (var component in components)
+		INav[] navBars = NavBarFactory.GetAllNavBars();
+
+		foreach (var navBar in navBars)
 		{
-			if (component.GetComponentId() == componentId)
+			if (navBar.GetComponentId() == componentId)
 			{
-				return ComponentConverter.ConvertToAnchor(component);
+				return navBar;
 			}
 		}
 
 		return null;
 	}
 
-	public static IButton<T>? GetButton<T>(ComponentId componentId, IComponent[] components)
+	public static INav? GetNav(string componentIdString)
+	{
+		INav[] navBars = NavBarFactory.GetAllNavBars();
+		ComponentId componentId = (ComponentId)EnumConverter.ConvertToComponentId(componentIdString);
+
+		foreach (var navBar in navBars)
+		{
+			if (navBar.GetComponentId() == componentId)
+			{
+				return navBar;
+			}
+		}
+
+		return null;
+	}
+
+	public static IAnchor? GetAnchor(string componentIdString)
+	{
+		IComponent[] anchors = AnchorFactory.GetAllAnchors();
+		ComponentId componentId = (ComponentId)EnumConverter.ConvertToComponentId(componentIdString);
+
+		foreach (var anchor in anchors)
+		{
+			if (anchor.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToAnchor(anchor);
+			}
+		}
+
+		return null;
+	}
+
+	public static IButton? GetButton(string componentIdString)
+	{
+		IComponent[] buttons = ButtonFactory.GetAllButtons();
+		ComponentId componentId = (ComponentId)EnumConverter.ConvertToComponentId(componentIdString);
+
+		foreach (var button in buttons)
+		{
+			if (button.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToButton(button);
+			}
+		}
+
+		return null;
+	}
+
+	public static IButton? GetButton(ComponentId componentId)
+	{
+		IComponent[] buttons = ButtonFactory.GetAllButtons();
+
+		foreach (var button in buttons)
+		{
+			if (button.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToButton(button);
+			}
+		}
+
+		return null;
+	}
+
+	public static IAnchor? GetAnchor(ComponentId componentId)
+	{
+		IComponent[] anchors = AnchorFactory.GetAllAnchors();
+
+		foreach (var anchor in anchors)
+		{
+			if (anchor.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToAnchor(anchor);
+			}
+		}
+
+		return null;
+	}
+
+	public static IButton? GetButton(ComponentId componentId, IComponent[] components)
 	{
 		foreach (var component in components)
 		{
 			if (component.GetComponentId() == componentId)
 			{
-				return ComponentConverter.ConvertToButton<T>(component);
+				return ComponentConverter.ConvertToButton(component);
 			}
 		}
 

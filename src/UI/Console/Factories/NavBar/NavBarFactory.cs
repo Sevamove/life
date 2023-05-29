@@ -5,22 +5,32 @@ namespace UI.Console.Factories.NavBar;
 
 public static class NavBarFactory
 {
-	public static IComponent GetHomeNavBar()
+	public static INav[] GetAllNavBars()
+	{
+		return new INav[] {
+			GetHomeNavBar(),
+			GetGameNewNavBar(),
+			GetGamesNavBar(),
+			GetPlaygroundNavBar()
+		};
+	}
+
+	public static INav GetHomeNavBar()
 	{
 		return new HomeNavBar();
 	}
 
-	public static IComponent GetGameNewNavBar()
+	public static INav GetGameNewNavBar()
 	{
 		return new GameNewNavBar();
 	}
 
-	public static IComponent GetGamesNavBar()
+	public static INav GetGamesNavBar()
 	{
 		return new GamesNavBar();
 	}
 
-	public static IComponent GetPlaygroundNavBar()
+	public static INav GetPlaygroundNavBar()
 	{
 		return new PlaygroundNavBar();
 	}

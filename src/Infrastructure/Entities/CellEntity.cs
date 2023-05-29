@@ -4,8 +4,8 @@ namespace Infrastructure.Entities;
 
 public record CellEntity : BaseEntity
 {
-	[JsonPropertyName("state")]
+	[JsonPropertyName("State")]
 	public required int State { get; init; }
-	[JsonPropertyName("position")]
+	[JsonPropertyName("Position")]
 	public required PositionEntity Position { get; init; }
 }

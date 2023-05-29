@@ -5,6 +5,16 @@ namespace UI.Console.Factories.Anchor;
 
 public static class AnchorFactory
 {
+	public static IComponent[] GetAllAnchors()
+	{
+		return new IComponent[] {
+			GetGoToGameNewPageAnchor(),
+			GetGoToGamesPageAnchor(),
+			GetGoToHomePageAnchor(),
+			GetGoToPlaygroundPageAnchor()
+		};
+	}
+
 	public static IComponent GetGoToGameNewPageAnchor()
 	{
 		return new GoToGameNewPageAnchor();

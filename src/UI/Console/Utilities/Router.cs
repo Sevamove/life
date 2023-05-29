@@ -7,17 +7,17 @@ public class Router : IRouter
 {
 	private Page currentPage;
 
-	public Router(Page startPage)
+	public Router()
 	{
-		this.currentPage = startPage;
+		this.currentPage = Page.Home;
 	}
 
-	public void SetCurrentPage(Page currentPage)
+	public void Push(Page currentPage)
 	{
 		this.currentPage = currentPage;
 	}
 
-	public Page GetCurrentPage()
+	public Page Pull()
 	{
 		return this.currentPage;
 	}

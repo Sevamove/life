@@ -5,10 +5,10 @@ namespace Infrastructure.Entities;
 
 public record PatternEntity : BaseEntity
 {
-	[JsonPropertyName("name")]
+	[JsonPropertyName("Name")]
 	public required string Name { get; init; }
-	[JsonPropertyName("minimum_area_needed")]
+	[JsonPropertyName("Minimum_area_needed")]
 	public required AreaEntity MinimumAreaNeeded { get; init; }
-	[JsonPropertyName("cells")]
+	[JsonPropertyName("Cells")]
 	public required Cell[] Cells { get; init; }
 }

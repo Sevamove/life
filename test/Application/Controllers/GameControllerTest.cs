@@ -10,11 +10,11 @@ namespace Test.Application.Controllers;
 
 public class GameControllerTest
 {
-	private readonly IGameController gameController;
+	private readonly IRestApi restApi;
 
 	public GameControllerTest()
 	{
-		this.gameController = new GameController();
+		this.restApi = new RestApi();
 	}
 
 	[Fact]
@@ -27,7 +27,7 @@ public class GameControllerTest
 
 		// Act.
 
-		GameDTO expectedGame = await this.gameController.PostGame(gameDTO);
+		GameDTO expectedGame = await this.restApi.PostGame(gameDTO);
 
 		// Assert.
 
@@ -46,7 +46,7 @@ public class GameControllerTest
 
 		// Act.
 
-		GameDTO[]? expectedGames = await this.gameController.GetGames();
+		GameDTO[]? expectedGames = await this.restApi.GetGames();
 
 		// Assert.
 
@@ -66,7 +66,7 @@ public class GameControllerTest
 
 		// Act.
 
-		GameDTO? expectedGame = await this.gameController.GetGame(actualGameId);
+		GameDTO? expectedGame = await this.restApi.GetGame(actualGameId);
 		string expectedGameId = expectedGame.Id;
 		string expectedGameName = expectedGame.Name;
 
@@ -87,7 +87,7 @@ public class GameControllerTest
 		IGame gameMock = new GameMock(gameId, gameName);
 		GameDTO gameDTO = GameDTOBuilder.GetGameDTO(gameMock);
 
-		GameDTO expectedGame = await this.gameController.PostGame(gameDTO);
+		GameDTO expectedGame = await this.restApi.PostGame(gameDTO);
 
 		return true;
 	}

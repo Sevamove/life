@@ -1,4 +1,5 @@
 using UI.Console.Factories.Anchor;
+using UI.Console.Factories.Button;
 using UI.Console.Interfaces;
 
 namespace UI.Console.Factories.NavBar;
@@ -10,6 +11,7 @@ public static class NavBarChildrenFactory
 		return new IComponent[] {
 			AnchorFactory.GetGoToGameNewPageAnchor(),
 			AnchorFactory.GetGoToGamesPageAnchor(),
+			ButtonFactory.GetQuitGameButton(),
 			// new GoToPlaygroundPageAnchor()
 		};
 	}
@@ -19,7 +21,8 @@ public static class NavBarChildrenFactory
 		return new IComponent[] {
 			AnchorFactory.GetGoToHomePageAnchor(),
 			AnchorFactory.GetGoToGamesPageAnchor(),
-			AnchorFactory.GetGoToPlaygroundPageAnchor()
+			AnchorFactory.GetGoToPlaygroundPageAnchor(),
+			ButtonFactory.GetQuitGameButton(),
 		};
 	}
 
@@ -28,7 +31,8 @@ public static class NavBarChildrenFactory
 		return new IComponent[] {
 			AnchorFactory.GetGoToHomePageAnchor(),
 			AnchorFactory.GetGoToGameNewPageAnchor(),
-			AnchorFactory.GetGoToPlaygroundPageAnchor()
+			AnchorFactory.GetGoToPlaygroundPageAnchor(),
+			ButtonFactory.GetQuitGameButton(),
 		};
 	}
 
@@ -38,6 +42,7 @@ public static class NavBarChildrenFactory
 			AnchorFactory.GetGoToHomePageAnchor(),
 			AnchorFactory.GetGoToGameNewPageAnchor(),
 			AnchorFactory.GetGoToGamesPageAnchor(),
+			ButtonFactory.GetQuitGameButton(),
 			// new PlayGameButton(),
 			// new PauseGameButton()
 		};

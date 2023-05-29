@@ -4,7 +4,7 @@ using UI.Console.Types;
 
 namespace UI.Console.Components.Common;
 
-public abstract class BaseButton<T> : BaseComponent, IButton<T>
+public abstract class BaseButton : BaseComponent, IButton
 {
 	internal readonly string content;
 	internal readonly string title;
@@ -37,6 +37,4 @@ public abstract class BaseButton<T> : BaseComponent, IButton<T>
 	{
 		return this.title;
 	}
-
-	public abstract void SetData(T data);
 }
