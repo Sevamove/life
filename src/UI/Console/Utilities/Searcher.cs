@@ -21,6 +21,19 @@ public class Searcher
 		return null;
 	}
 
+	public static IElement? GetElement(ElementId elementId, IComponent[] components)
+	{
+		foreach (var component in components)
+		{
+			if (component.GetElementId() == elementId)
+			{
+				return component;
+			}
+		}
+
+		return null;
+	}
+
 
 	public static IPage? GetPage(ComponentId componentId, IPage[] pages)
 	{
