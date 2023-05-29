@@ -17,42 +17,62 @@ public class NewGameForm : BaseForm
 
 	public override async Task<ComponentResult> Execute()
 	{
-		// this.componentHelper.Render(ComponentId.GameNameInput);
-		// ComponentResult gameNameResult = await this.componentHelper.Execute(ComponentId.GameNameInput);
+		this.componentHelper.Render(ComponentId.GameNameInput);
+		string gameNameResult = (string)(await this.componentHelper.Execute(ComponentId.GameNameInput)).Storage.UserInput.Clone();
 
-		// if (gameNameResult.Storage.Router.Pull() != null)
+		// if (gameNameResult.Storage.Router.Pull() != Page.NotFound)
 		// {
+		// 	System.Console.WriteLine(gameNameResult.Storage.Router.Pull());
 		// 	return gameNameResult;
 		// }
 
-		// this.componentHelper.Render(ComponentId.GridAreaInput);
-		// ComponentResult gridAreaResult = await this.componentHelper.Execute(ComponentId.GridAreaInput);
+		this.componentHelper.Render(ComponentId.GridAreaInput);
+		string gridAreaResult = (string)(await this.componentHelper.Execute(ComponentId.GridAreaInput)).Storage.UserInput.Clone();
 
-		// if (gridAreaResult.Storage.Router.Pull() != null)
+		// if (gridAreaResult.Storage.Router.Pull() != Page.NotFound)
 		// {
 		// 	return gridAreaResult;
 		// }
 
-		// this.componentHelper.Render(ComponentId.CellPositionInput);
-		// ComponentResult cellPositionResult1 = await this.componentHelper.Execute(ComponentId.CellPositionInput);
+		List<string> cells = new List<string>();
 
-		// this.componentHelper.Render(ComponentId.CellPositionInput);
-		// ComponentResult cellPositionResult2 = await this.componentHelper.Execute(ComponentId.CellPositionInput);
+		while (true)
+		{
+			this.componentHelper.Render(ComponentId.CellPositionInput);
+			ComponentResult cellPositionResult = await this.componentHelper.Execute(ComponentId.CellPositionInput);
+			System.Console.WriteLine(cellPositionResult.Storage.UserInput);
 
-		// this.componentHelper.Render(ComponentId.CellPositionInput);
-		// ComponentResult cellPositionResult3 = await this.componentHelper.Execute(ComponentId.CellPositionInput);
+			cells.Add(cellPositionResult.Storage.UserInput);
 
-		string[] cellPositions = new string[] {
-			// cellPositionResult1.Storage.InputValue,
-			// cellPositionResult2.Storage.InputValue,
-			// cellPositionResult3.Storage.InputValue
-			"10-13",
-			"10-14",
-			"10-15"
-		};
+			System.Console.WriteLine("Would you like to add more cell positions? (y)es or (n)o");
+			string more = System.Console.ReadLine();
 
-		// GameDTO? game = DTOConverter.ConvertToGameDTO("2121312314124", gameNameResult.Storage.InputValue, gridAreaResult.Storage.InputValue, cellPositions);
-		GameDTO? game = DTOConverter.ConvertToGameDTO("404", "Game 12122", "20-20", cellPositions);
+			if (more.Equals("n"))
+			{
+				break;
+			}
+		}
+
+		System.Console.WriteLine(gameNameResult);
+		System.Console.WriteLine(gridAreaResult);
+		System.Console.WriteLine(cells[0]);
+		System.Console.WriteLine(cells[1]);
+		System.Console.WriteLine(cells[2]);
+
+		// string[] cellPositions = new string[] {
+		// 	cellPositionResult1.Storage.UserInput,
+		// 	cellPositionResult2.Storage.UserInput,
+		// 	cellPositionResult3.Storage.UserInput
+		// 	// "10-9",
+		// 	// "10-10",
+		// 	// "10-11",
+		// 	// "10-14",
+		// 	// "10-15",
+		// 	// "10-16",
+		// };
+
+		GameDTO? game = DTOConverter.ConvertToGameDTO("NEWNEWEWNE", gameNameResult, gridAreaResult, cells.ToArray());
+		// GameDTO? game = DTOConverter.ConvertToGameDTO("404", "Game 12122", "20-20", cellPositions);
 
 		// System.Console.WriteLine("Got game " + game.Name + "State " + game.Grid.Cells[0, 0].State);
 		// System.Console.WriteLine("Got game " + game.Name + "State " + game.Grid.Cells[10, 13].State);
@@ -82,7 +102,7 @@ public class NewGameForm : BaseForm
 		// Storage result = await postGameButton.Execute();
 
 		// return result;
-		return await base.Execute();
+		return await this.GetComponentResult();
 	}
 
 	public override void Render()

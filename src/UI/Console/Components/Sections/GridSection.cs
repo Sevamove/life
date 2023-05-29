@@ -1,8 +1,6 @@
 using Configuration;
 using Domain.DTO;
 using Domain.ValueObjects.Cell;
-using Infrastructure.Builders.DTO;
-using Test.Mocks;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Section;
@@ -14,15 +12,19 @@ public class GridSection : BaseSection
 {
 	public GridSection() : base(
 		ComponentId.GridSection,
-		SectionChildrenFactory.GetGridSectionChildren())
+		SectionChildrenFactory.GetGridSectionChildren(),
+		2000)
 	{
-		// GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());
-		// this.game = gamea;
+	}
+
+	public override async Task LoadResourceDependencies()
+	{
+		await base.LoadResourceDependencies();
+		this.componentStorage.Game = await this.restApi.GetGrid(this.componentStorage.Game);
 	}
 
 	public override void Render()
 	{
-		System.Console.WriteLine("Grid rendered.");
 		GameDTO game = this.componentStorage.Game;
 		AreaDTO area = game.Grid.Area;
 
@@ -43,7 +45,7 @@ public class GridSection : BaseSection
 
 	public override async Task<ComponentResult> Execute()
 	{
-		this.componentStorage.Game = await this.restApi.GetGrid(this.componentStorage.Game);
+		this.componentStorage.Router.Push(Page.Playground);
 
 		return await base.Execute();
 	}

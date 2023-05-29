@@ -21,6 +21,6 @@ public class GoToPlaygroundPageAnchor : BaseAnchor
 
 		this.componentStorage.Router.Push(Page.Playground);
 
-		return await base.Execute();
+		return await this.GetComponentResult();
 	}
 }

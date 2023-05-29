@@ -4,6 +4,6 @@ namespace Infrastructure.Entities;
 
 public record BaseEntity
 {
-	[JsonPropertyName("id")]
+	[JsonPropertyName("Id")]
 	public required string Id { get; init; }
 }

@@ -7,11 +7,18 @@ public class Config : IConfig
 {
 	private const Env CURRENT_ENV = Env.PRD;
 
-	private const string PRD_DB_URL = "./src/Infrastructure/DB/data.json";
-	private const string TST_DB_URL = "../../../../test/Infrastructure/DB/test_data.json";
+	// UI.
+	private const int FRAMES_PER_SECOND = 1;
+	private const bool SHOULD_CLEAR_CONSOLE_ON_EACH_FRAME = true;
 
 	private const string LIVE_CELL_ICON = "🟦";
 	private const string DEAD_CELL_ICON = "⬜️";
+
+	// Infrastructure.
+
+	private const string PRD_DB_URL = "./src/Infrastructure/DB/data.json";
+	private const string TST_DB_URL = "../../../../test/Infrastructure/DB/test_data.json"; // CORRECT
+																						   // private const string TST_DB_URL = "../../../../src/Infrastructure/DB/data.json";
 
 	public static string GetDbUrl() => CURRENT_ENV switch
 	{
@@ -25,14 +32,16 @@ public class Config : IConfig
 		return CURRENT_ENV;
 	}
 
-	public static string GetPrdDbUrl()
+	public static int GetScreenDelay()
 	{
-		return PRD_DB_URL;
+		int oneSecondInMiliseconds = 1000;
+
+		return oneSecondInMiliseconds / FRAMES_PER_SECOND;
 	}
 
-	public static string GetTstDbUrl()
+	public static bool ShouldClearConsole()
 	{
-		return TST_DB_URL;
+		return SHOULD_CLEAR_CONSOLE_ON_EACH_FRAME;
 	}
 
 	public static string GetLiveCellIcon()
@@ -43,5 +52,15 @@ public class Config : IConfig
 	public static string GetDeadCellIcon()
 	{
 		return DEAD_CELL_ICON;
+	}
+
+	public static string GetPrdDbUrl()
+	{
+		return PRD_DB_URL;
+	}
+
+	public static string GetTstDbUrl()
+	{
+		return TST_DB_URL;
 	}
 }

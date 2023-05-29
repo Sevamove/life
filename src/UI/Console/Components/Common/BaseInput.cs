@@ -20,43 +20,44 @@ public abstract class BaseInput : BaseComponent, IInput
 	}
 
 	// TODO: remove.
-	public string? GetValue()
-	{
-		return this.value;
-	}
+	// public string? GetValue()
+	// {
+	// 	return this.value;
+	// }
 
-	// TODO: remove.
-	public void SetValue(string placeholder)
-	{
-		// System.Console.Write(placeholder + ": ");
+	// // TODO: remove.
+	// public void SetValue(string placeholder)
+	// {
+	// 	// System.Console.Write(placeholder + ": ");
 
-		// this.SetValue();
-	}
+	// 	// this.SetValue();
+	// }
 
-	public void SetValue()
-	{
-		this.value = UserInputListener.Listen();
-	}
+	// public void SetValue()
+	// {
+	// 	this.value = UserInputListener.Listen(5000);
+	// }
 
-	public virtual async Task<ComponentResult> Execute()
-	{
-		this.SetValue();
+	// public virtual async Task<ComponentResult> Execute()
+	// {
+	// 	// this.SetValue();
 
-		if (this.IsValidInputValue())
-		{
-			return await Searcher.GetAnchor(this.GetValue()).Execute();
-		}
+	// 	// if (UserInputValidator.IsValidNavBarInputValue(this.GetValue()))
+	// 	// {
+	// 	// 	return await Searcher.GetAnchor(this.GetValue()).Execute();
+	// 	// }
 
-		if (UserInputValidator.IsValidCellPositionInputValue(this.GetValue()))
-		{
-			this.componentStorage.InputValue = this.GetValue();
+	// 	// if (this.IsValidInputValue())
+	// 	// {
+	// 	// 	this.componentStorage.InputValue = this.GetValue();
 
-			return await base.Execute();
-		}
+	// 	// 	return await base.Execute();
+	// 	// }
 
-		System.Console.WriteLine($"Invalid user input in {this.GetComponentId()}");
-		throw new ArgumentNullException("Invalid user input");
-	}
+	// 	// System.Console.WriteLine($"Invalid user input in {this.GetComponentId()}");
+	// 	// throw new ArgumentNullException("Invalid user input");
+	// 	return await base.Execute();
+	// }
 
-	public abstract bool IsValidInputValue();
+	// public abstract bool IsValidInputValue();
 }

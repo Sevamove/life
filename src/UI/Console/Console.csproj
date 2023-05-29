@@ -9,14 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Domain.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Application\Application.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\test\Test.csproj" />
+    <ProjectReference Include="..\..\Application\Application.csproj" />
   </ItemGroup>
 </Project>

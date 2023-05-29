@@ -21,6 +21,6 @@ public class GoToGamesPageAnchor : BaseAnchor
 
 		this.componentStorage.Router.Push(Page.Games);
 
-		return await base.Execute();
+		return await this.GetComponentResult();
 	}
 }

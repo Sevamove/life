@@ -2,11 +2,11 @@
 
 public class Program
 {
-	public static void Main()
+	public static async Task Main()
 	{
 		App app = new App();
 
-		app.Launch();
+		await app.Launch();
 	}
 }
 

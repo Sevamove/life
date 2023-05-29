@@ -1,106 +1,100 @@
 using Infrastructure.Entities;
 using Newtonsoft.Json;
+using System.IO;
+using System.Threading.Tasks;
 
-namespace Infrastructure.Adapters;
-
-public class JsonFileAdapter<T> : IDataStorageAdapter<T>
+namespace Infrastructure.Adapters
 {
-	private readonly string filePath;
-
-	public JsonFileAdapter(string filePath)
+	public class JsonFileAdapter<T> : IDataStorageAdapter<T>
 	{
-		this.filePath = filePath;
-		this.validateFileExists();
-	}
+		private readonly string filePath;
 
-	public async Task<List<T>> SaveAllAsync(List<T> data)
-	{
-		this.validateFileExists();
-
-		// Load the existing JSON data from the file.
-		// TODO: fix!!!;
-		List<T>? jsonData = null; //await this.FindAllAsync();
-
-		// Create a new array of items if not already exists.
-		if (jsonData == null)
+		public JsonFileAdapter(string filePath)
 		{
-			jsonData = new List<T>();
+			this.filePath = filePath;
+			this.ValidateFileExists();
 		}
 
-		// Add the new item(s) to the existing list.
-		foreach (var item in data)
+		public async Task<List<T>> SaveAllAsync(List<T> data)
 		{
-			jsonData.Add(item);
-		}
+			this.ValidateFileExists();
 
-		// Serialize the updated list of items back into JSON.
-		string updatedJsonString = this.serialize(jsonData);
+			// Load the existing JSON data from the file.
+			System.Console.WriteLine("FIRST");
+			List<T>? jsonData = await this.FindAllAsync();
 
-		// Write the serialized JSON back to the file, overwriting the existing content.
-		File.WriteAllText(this.filePath, updatedJsonString);
+			// Create a new list of items if it doesn't already exist.
+			if (jsonData == null)
+			{
+				jsonData = new List<T>();
+			}
 
-		Console.WriteLine("New item(s) added to the JSON file.");
+			// Add the new item(s) to the existing list.
+			jsonData.AddRange(data);
 
-		return data;
-	}
+			// Serialize the updated list of items back into JSON.
+			string updatedJsonString = this.Serialize(jsonData);
 
-	public async Task<List<T>?> FindAllAsync()
-	{
-		string jsonString = await File.ReadAllTextAsync(this.filePath);
+			// Write the serialized JSON back to the file, overwriting the existing content.
+			await File.WriteAllTextAsync(this.filePath, updatedJsonString);
 
-		if (jsonString == null || jsonString == "")
-		{
-			jsonString = "{}";
-		}
+			Console.WriteLine("New item(s) added to the JSON file.");
 
-		try
-		{
-			List<T>? data = this.deserialize<T>(jsonString);
 			return data;
 		}
-		catch (Exception error)
+
+		public async Task<List<T>?> FindAllAsync()
 		{
-			// Handle the exception accordingly (e.g., log an error, return a default value, etc.)
-			Console.WriteLine(error);
-			return null;
+			System.Console.WriteLine("SECOND");
+			string jsonString = await File.ReadAllTextAsync(this.filePath);
+
+			try
+			{
+				System.Console.WriteLine("THIRD");
+				List<T>? data = await this.DeserializeAsync<T>(jsonString);
+				System.Console.WriteLine("FOURTH");
+				return data;
+			}
+			catch (Exception error)
+			{
+				Console.WriteLine("FIFTH");
+				Console.WriteLine(error);
+				throw; // Rethrow the exception to observe the details in the debugger
+			}
 		}
-	}
 
-	public async Task<T?> FindByIdAsync<T>(string id) where T : BaseEntity
-	{
-		string jsonString = await File.ReadAllTextAsync(this.filePath);
-		List<T>? data = this.deserialize<T>(jsonString);
-
-		if (data == null)
+		public async Task<T?> FindByIdAsync<T>(string id) where T : BaseEntity
 		{
-			return default(T);
+			string jsonString = await File.ReadAllTextAsync(this.filePath);
+			List<T>? data = await this.DeserializeAsync<T>(jsonString);
+
+			if (data == null)
+			{
+				return default(T);
+			}
+
+			T? item = data.Find(x => x.Id.Equals(id));
+
+			return item;
 		}
 
-		// TODO: solve "Dereference of a possibly null reference."
-		T? item = data.Find(x => x.Id.Equals(id));
-
-		return item;
-	}
-
-	internal string serialize(List<T> data)
-	{
-		return JsonConvert.SerializeObject(data, Formatting.Indented);
-	}
-
-	internal List<T>? deserialize<T>(string json)
-	{
-		return JsonConvert.DeserializeObject<List<T>>(json);
-	}
-
-	private void validateFileExists()
-	{
-		if (!File.Exists(this.filePath))
+		internal string Serialize(List<T> data)
 		{
-			// TODO: figure out how to handle exception properly: Console or Exception.
-			Console.WriteLine("File not found.", this.filePath);
-			throw new FileNotFoundException("File not found.", this.filePath + Directory.GetCurrentDirectory());
+			return JsonConvert.SerializeObject(data, Formatting.Indented);
+		}
 
-			// return null;
+		internal async Task<List<T>?> DeserializeAsync<T>(string json)
+		{
+			return await Task.Run(() => JsonConvert.DeserializeObject<List<T>>(json));
+		}
+
+		private void ValidateFileExists()
+		{
+			if (!File.Exists(this.filePath))
+			{
+				Console.WriteLine("File not found: " + this.filePath);
+				throw new FileNotFoundException("File not found: " + this.filePath);
+			}
 		}
 	}
 }

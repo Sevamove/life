@@ -15,8 +15,8 @@ public class GameNameInput : BaseInputWithLabel
 	{
 	}
 
-	public override bool IsValidInputValue()
+	public override bool IsValidUserInput()
 	{
-		return UserInputValidator.IsValidGameNameInputValue(this.GetValue());
+		return UserInputValidator.IsValidGameNameInputValue(this.componentStorage.UserInput);
 	}
 }

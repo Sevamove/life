@@ -15,11 +15,14 @@ public class GamesPage : BasePage
 
 	public override void Render()
 	{
-		this.componentHelper.Render(ComponentId.GamesNavBar);
+		base.Render();
+		this.componentHelper.Render(ComponentId.GamesStackedList);
 	}
 
 	public async override Task<ComponentResult> Execute()
 	{
-		return await this.componentHelper.Execute(ComponentId.GamesNavBar);
+		// await this.componentHelper.Execute(ComponentId.GamesStackedList);
+		// this.componentHelper.Render(ComponentId.GamesStackedList);
+		return await this.componentHelper.Execute(ComponentId.GamesStackedList);
 	}
 }

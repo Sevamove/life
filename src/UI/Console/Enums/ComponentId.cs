@@ -36,5 +36,8 @@ public enum ComponentId
 	GamesNavBar,
 	PlaygroundNavBar,
 	// Invalid components.
-	InvalidComponentId
+	InvalidComponentId,
+	// Lists.
+	GamesStackedList
+
 }

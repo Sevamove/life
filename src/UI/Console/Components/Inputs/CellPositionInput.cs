@@ -15,8 +15,8 @@ public class CellPositionInput : BaseInputWithLabel
 	{
 	}
 
-	public override bool IsValidInputValue()
+	public override bool IsValidUserInput()
 	{
-		return UserInputValidator.IsValidCellPositionInputValue(this.GetValue());
+		return UserInputValidator.IsValidCellPositionInputValue(this.componentStorage.UserInput);
 	}
 }

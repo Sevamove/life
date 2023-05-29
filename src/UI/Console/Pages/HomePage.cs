@@ -15,11 +15,11 @@ public class HomePage : BasePage
 
 	public override void Render()
 	{
-		this.componentHelper.Render(ComponentId.HomeNavBar);
+		base.Render();
 	}
 
 	public async override Task<ComponentResult> Execute()
 	{
-		return await this.componentHelper.Execute(ComponentId.HomeNavBar);
+		return await base.Execute();
 	}
 }

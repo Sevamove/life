@@ -15,8 +15,8 @@ public class GridAreaInput : BaseInputWithLabel
 	{
 	}
 
-	public override bool IsValidInputValue()
+	public override bool IsValidUserInput()
 	{
-		return UserInputValidator.IsValidGridAreaInputValue(this.GetValue());
+		return UserInputValidator.IsValidGridAreaInputValue(this.componentStorage.UserInput);
 	}
 }

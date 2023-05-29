@@ -1,3 +1,4 @@
+using Domain.DTO;
 using UI.Console.Converters;
 using UI.Console.Enums;
 using UI.Console.Interfaces;
@@ -13,22 +14,18 @@ public class UserInputValidator
 	{
 		ComponentId? componentId = EnumConverter.ConvertToComponentId(inputValue);
 
-		System.Console.WriteLine("1");
 		if (componentId == null)
 		{
 			return false;
 		}
 
-		System.Console.WriteLine("1");
 		IComponent? navBar = Searcher.GetAnchor((ComponentId)componentId);
 
-		System.Console.WriteLine("1");
 		if (navBar == null)
 		{
 			return false;
 		}
 
-		System.Console.WriteLine("1");
 		return true;
 	}
 
@@ -57,6 +54,25 @@ public class UserInputValidator
 		return true;
 	}
 
+	public static bool IsValidQuitGameButton(string inputValue)
+	{
+		ComponentId? componentId = EnumConverter.ConvertToComponentId(inputValue);
+
+		if (componentId == null)
+		{
+			return false;
+		}
+
+		IComponent? button = Searcher.GetButton((ComponentId)componentId);
+
+		if (button == null)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
 	// NOTE: The correct form at the moment: WIDTH-HEIGHT (e.g. 20-20).
 	// TODO: improve. Will fail acceptatietest.
 	public static bool IsValidGridAreaInputValue(string inputValue)
@@ -69,5 +85,19 @@ public class UserInputValidator
 		}
 
 		return true;
+	}
+
+
+	public static bool IsValidGamesStackedListUserInput(GameDTO[] games, string userInput)
+	{
+		foreach (var game in games)
+		{
+			if (game.Name == userInput || game.Id == userInput)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

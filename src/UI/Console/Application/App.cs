@@ -23,7 +23,7 @@ public class App
 		this.localStorage = localStorage;
 	}
 
-	public async void Launch()
+	public async Task Launch()
 	{
 		while (true)
 		{
@@ -32,6 +32,7 @@ public class App
 				IPage? pageRef = Searcher.GetPage(ComponentId.HomePage, this.pages);
 				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
+				await pageRef.LoadResourceDependencies();
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
@@ -48,6 +49,7 @@ public class App
 				IPage? pageRef = Searcher.GetPage(ComponentId.GamesPage, this.pages);
 				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
+				await pageRef.LoadResourceDependencies();
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
@@ -64,6 +66,7 @@ public class App
 				IPage? pageRef = Searcher.GetPage(ComponentId.GameNewPage, this.pages);
 				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
+				await pageRef.LoadResourceDependencies();
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 
@@ -80,6 +83,7 @@ public class App
 				IPage? pageRef = Searcher.GetPage(ComponentId.PlaygroundPage, this.pages);
 				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());
 
+				await pageRef.LoadResourceDependencies();
 				pageRef.Render();
 				ComponentResult pageResult = await pageRef.Execute();
 

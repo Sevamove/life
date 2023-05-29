@@ -8,5 +8,6 @@ public enum ElementId
 	Input,
 	Form,
 	Section,
+	List, // <li>
 	Main // It is recommended to have only one <main> element per page.
 }

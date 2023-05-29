@@ -13,14 +13,14 @@ public class RestApi : IRestApi
 		return this.gameController.DeleteGame(game);
 	}
 
-	public Task<GameDTO?> GetGame(string id)
+	public async Task<GameDTO?> GetGame(string id)
 	{
-		return this.gameController.GetGame(id);
+		return await this.gameController.GetGame(id);
 	}
 
-	public Task<GameDTO[]?> GetGames()
+	public async Task<GameDTO[]?> GetGames()
 	{
-		return this.gameController.GetGames();
+		return await this.gameController.GetGames();
 	}
 
 	public async Task<GameDTO> GetGrid(GameDTO game)
@@ -28,13 +28,13 @@ public class RestApi : IRestApi
 		return await this.gridController.GetGrid(game);
 	}
 
-	public Task<GameDTO> PostGame(GameDTO game)
+	public async Task<GameDTO> PostGame(GameDTO game)
 	{
-		return this.gameController.PostGame(game);
+		return await this.gameController.PostGame(game);
 	}
 
-	public Task<GameDTO> PutGame(GameDTO game)
+	public async Task<GameDTO> PutGame(GameDTO game)
 	{
-		return this.gameController.PutGame(game);
+		return await this.gameController.PutGame(game);
 	}
 }

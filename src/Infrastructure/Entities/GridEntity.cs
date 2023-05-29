@@ -4,8 +4,8 @@ namespace Infrastructure.Entities;
 
 public record GridEntity
 {
-	[JsonPropertyName("area")]
+	[JsonPropertyName("Area")]
 	public required AreaEntity Area { get; init; }
-	[JsonPropertyName("cells")]
+	[JsonPropertyName("Cells")]
 	public required CellEntity[,] Cells { get; init; }
 }

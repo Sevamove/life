@@ -1,6 +1,4 @@
 using Domain.DTO;
-using Infrastructure.Builders.DTO;
-using Test.Mocks;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.Button;
@@ -22,16 +20,16 @@ public class PostGameButton : BaseButton
 
 	public override async Task<ComponentResult> Execute()
 	{
-		System.Console.WriteLine("Post game button clicked!");
+		// System.Console.WriteLine("Post game button clicked!");
 
-		// TODO: remove.
-		GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());
+		// // TODO: remove.
+		// GameDTO gamea = GameDTOBuilder.GetGameDTO(new GameMock());
 
-		GameDTO game = await this.restApi.PostGame(gamea);
+		// GameDTO game = await this.restApi.PostGame(gamea);
 
-		this.componentStorage.Game = game;
-		this.componentStorage.Router.Push(Page.Playground);
+		// this.componentStorage.Game = game;
+		// this.componentStorage.Router.Push(Page.Playground);
 
-		return await base.Execute();
+		return await this.GetComponentResult();
 	}
 }

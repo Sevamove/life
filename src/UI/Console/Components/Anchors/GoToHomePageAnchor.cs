@@ -21,6 +21,6 @@ public class GoToHomePageAnchor : BaseAnchor
 
 		this.componentStorage.Router.Push(Page.Home);
 
-		return await base.Execute();
+		return await this.GetComponentResult();
 	}
 }

@@ -4,8 +4,8 @@ namespace Infrastructure.Entities;
 
 public record PositionEntity
 {
-	[JsonPropertyName("x")]
+	[JsonPropertyName("X")]
 	public required int X { get; init; }
-	[JsonPropertyName("y")]
+	[JsonPropertyName("Y")]
 	public required int Y { get; init; }
 }

@@ -21,6 +21,7 @@ public class QuitGameButton : BaseButton
 		System.Console.WriteLine("Quit game button clicked!");
 
 		this.componentStorage.IsGameQuit = true;
+		Environment.Exit(0);
 
 		return new ComponentResult
 		{

@@ -1,6 +1,7 @@
 using UI.Console.Converters;
 using UI.Console.Enums;
 using UI.Console.Factories.Anchor;
+using UI.Console.Factories.Button;
 using UI.Console.Factories.NavBar;
 using UI.Console.Interfaces;
 
@@ -119,6 +120,37 @@ public class Searcher
 			if (anchor.GetComponentId() == componentId)
 			{
 				return ComponentConverter.ConvertToAnchor(anchor);
+			}
+		}
+
+		return null;
+	}
+
+	public static IButton? GetButton(string componentIdString)
+	{
+		IComponent[] buttons = ButtonFactory.GetAllButtons();
+		ComponentId componentId = (ComponentId)EnumConverter.ConvertToComponentId(componentIdString);
+
+		foreach (var button in buttons)
+		{
+			if (button.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToButton(button);
+			}
+		}
+
+		return null;
+	}
+
+	public static IButton? GetButton(ComponentId componentId)
+	{
+		IComponent[] buttons = ButtonFactory.GetAllButtons();
+
+		foreach (var button in buttons)
+		{
+			if (button.GetComponentId() == componentId)
+			{
+				return ComponentConverter.ConvertToButton(button);
 			}
 		}
 
