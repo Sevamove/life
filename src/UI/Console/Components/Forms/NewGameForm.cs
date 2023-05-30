@@ -15,24 +15,26 @@ public class NewGameForm : BaseForm
 	{
 	}
 
+	// TODO: refactor and reduce amount of code lines.
 	public override async Task<ComponentResult> Execute()
 	{
 		this.componentHelper.Render(ComponentId.GameNameInput);
-		string gameNameResult = (string)(await this.componentHelper.Execute(ComponentId.GameNameInput)).Storage.UserInput.Clone();
+		var gameNameResult = await this.componentHelper.Execute(ComponentId.GameNameInput);
+		string gameNameString = (string)gameNameResult.Storage.UserInput.Clone();
 
-		// if (gameNameResult.Storage.Router.Pull() != Page.NotFound)
-		// {
-		// 	System.Console.WriteLine(gameNameResult.Storage.Router.Pull());
-		// 	return gameNameResult;
-		// }
+		if (gameNameResult.Storage.IsAnchorTriggered)
+		{
+			return gameNameResult;
+		}
 
 		this.componentHelper.Render(ComponentId.GridAreaInput);
-		string gridAreaResult = (string)(await this.componentHelper.Execute(ComponentId.GridAreaInput)).Storage.UserInput.Clone();
+		var gridAreaResult = await this.componentHelper.Execute(ComponentId.GridAreaInput);
+		string gridAreaString = (string)gridAreaResult.Storage.UserInput.Clone();
 
-		// if (gridAreaResult.Storage.Router.Pull() != Page.NotFound)
-		// {
-		// 	return gridAreaResult;
-		// }
+		if (gameNameResult.Storage.IsAnchorTriggered)
+		{
+			return gridAreaResult;
+		}
 
 		List<string> cells = new List<string>();
 
@@ -53,29 +55,8 @@ public class NewGameForm : BaseForm
 			}
 		}
 
-		System.Console.WriteLine(gameNameResult);
-		System.Console.WriteLine(gridAreaResult);
-		System.Console.WriteLine(cells[0]);
-		System.Console.WriteLine(cells[1]);
-		System.Console.WriteLine(cells[2]);
-
-		// string[] cellPositions = new string[] {
-		// 	cellPositionResult1.Storage.UserInput,
-		// 	cellPositionResult2.Storage.UserInput,
-		// 	cellPositionResult3.Storage.UserInput
-		// 	// "10-9",
-		// 	// "10-10",
-		// 	// "10-11",
-		// 	// "10-14",
-		// 	// "10-15",
-		// 	// "10-16",
-		// };
-
-		GameDTO? game = DTOConverter.ConvertToGameDTO("NEWNEWEWNE", gameNameResult, gridAreaResult, cells.ToArray());
-		// GameDTO? game = DTOConverter.ConvertToGameDTO("404", "Game 12122", "20-20", cellPositions);
-
-		// System.Console.WriteLine("Got game " + game.Name + "State " + game.Grid.Cells[0, 0].State);
-		// System.Console.WriteLine("Got game " + game.Name + "State " + game.Grid.Cells[10, 13].State);
+		// TODO: if id is String.Empty than assign it in the game service.
+		GameDTO? game = DTOConverter.ConvertToGameDTO("No id", gameNameString, gridAreaString, cells.ToArray());
 
 		if (game == null)
 		{
@@ -88,20 +69,6 @@ public class NewGameForm : BaseForm
 
 		System.Console.WriteLine("Successfully saved " + this.componentStorage.Game.Name);
 
-		// for (int i = 0; i < inputs.Length; i++)
-		// {
-		// 	IInput input = inputs[i];
-
-		// 	input.Render();
-		// 	await input.Execute();
-
-		// 	inputValues[i] = input.GetValue();
-		// }
-
-		// postGameButton.SetData(inputs);
-		// Storage result = await postGameButton.Execute();
-
-		// return result;
 		return await this.GetComponentResult();
 	}
 

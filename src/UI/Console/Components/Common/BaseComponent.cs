@@ -1,11 +1,11 @@
 using Application;
 using Application.Interfaces;
 using Configuration;
+using UI.Console.Types;
 using UI.Console.Enums;
 using UI.Console.Helpers;
 using UI.Console.Interfaces;
 using UI.Console.Listeners;
-using UI.Console.Types;
 using UI.Console.Utilities;
 using UI.Console.Validators;
 
@@ -44,40 +44,44 @@ public abstract class BaseComponent : BaseElement, IComponent
 
 	public void ResetComponentStorage()
 	{
-		Router router = new Router();
-		router.Push(Page.NotFound);
-
-		Storage newStorage = new Storage();
-		newStorage.Router = router;
-		this.componentStorage = newStorage;
+		this.componentStorage.IsAnchorTriggered = false;
 	}
 
+	// TODO: Refactor the code and create an executor (based on delegate types) if necessary.
 	public async virtual Task<ComponentResult> Execute()
 	{
 		this.updateComponentStorages();
 
-		string userInput = UserInputListener.Listen(this.renderDelay);
-		this.componentStorage.UserInput = userInput;
-
-		if (UserInputValidator.IsValidNavBarInputValue(userInput))
+		while (true)
 		{
-			System.Console.WriteLine("NAVBAR VALUE DETECTED");
-			return await Searcher.GetAnchor(userInput).Execute();
-		}
-
-		if (UserInputValidator.IsValidQuitGameButton(userInput))
-		{
-			return await Searcher.GetButton(userInput).Execute();
-		}
-
-		if (this.IsValidUserInput())
-		{
-			System.Console.WriteLine("IS VALID USER INPUT");
-			// this.ResetComponentStorage();
+			string userInput = UserInputListener.Listen(this.renderDelay);
 			this.componentStorage.UserInput = userInput;
-		}
 
-		return await this.GetComponentResult();
+			if (UserInputValidator.IsValidQuitGameButton(userInput))
+			{
+				return await Searcher.GetButton(userInput).Execute();
+			}
+
+			if (UserInputValidator.IsValidNavBarInputValue(userInput))
+			{
+				return await Searcher.GetAnchor(userInput).Execute();
+			}
+
+			if (this.IsValidUserInput())
+			{
+				this.ResetComponentStorage();
+				this.componentStorage.UserInput = userInput;
+				return await this.GetComponentResult();
+			}
+
+			if (this.GetComponentId() == ComponentId.GridSection)
+			{
+				return await this.GetComponentResult();
+			}
+
+			System.Console.WriteLine("! You have provided unsupported input. Try again !");
+			System.Console.WriteLine("> ");
+		}
 	}
 
 	// TODO: should it be here or somewhere in UserInputValidator?

@@ -6,7 +6,7 @@ using UI.Console.Utilities;
 
 namespace UI.Console.Validators;
 
-// TODO: implement.
+// TODO: Print a warning when the user has made a mistake.
 public class UserInputValidator
 {
 	// TODO: give a better name for the method.
@@ -92,7 +92,7 @@ public class UserInputValidator
 	{
 		foreach (var game in games)
 		{
-			if (game.Name == userInput || game.Id == userInput)
+			if (game.Name == userInput)
 			{
 				return true;
 			}

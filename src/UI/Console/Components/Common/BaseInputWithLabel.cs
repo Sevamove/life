@@ -18,15 +18,4 @@ public abstract class BaseInputWithLabel : BaseInput
 		System.Console.WriteLine(this.label);
 		System.Console.Write(this.placeholder + ": ");
 	}
-
-	// public override async Task<ComponentResult> Execute()
-	// {
-	// 	// this.SetValue(this.placeholder);
-	// 	this.SetValue(this.placeholder);
-
-	// 	return new Storage
-	// 	{
-	// 		InputValue = this.GetValue()
-	// 	};
-	// }
 }

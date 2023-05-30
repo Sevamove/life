@@ -3,6 +3,7 @@ using UI.Console.Interfaces;
 
 namespace UI.Console.Utilities;
 
+// TODO: Modify the class to accept a generic type instead of the specific type 'Page'.
 public class Router : IRouter
 {
 	private Page currentPage;

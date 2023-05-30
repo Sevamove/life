@@ -25,27 +25,43 @@ public class GamesStackedList : BaseStackedList
 	{
 		System.Console.WriteLine("# Games Stacked List");
 
-		foreach (var game in this.componentStorage.Games)
+		if (this.componentStorage.Games == null)
 		{
-			System.Console.WriteLine("Game Id: " + game.Id);
-			System.Console.WriteLine("Game Name: " + game.Name);
-			System.Console.WriteLine();
+			System.Console.WriteLine("! There are no games saved. Create a new game first !");
+		}
+		else
+		{
+			foreach (var game in this.componentStorage.Games)
+			{
+				System.Console.WriteLine();
+				System.Console.WriteLine("Game Name: " + game.Name);
+				System.Console.WriteLine("Grid Width: " + game.Grid.Area.Width);
+				System.Console.WriteLine("Grid Height: " + game.Grid.Area.Height);
+				System.Console.WriteLine();
+			}
+			System.Console.Write("> Choose a game and type the name: ");
 		}
 	}
 
 	// TODO: refactor.
 	public override async Task<ComponentResult> Execute()
 	{
-		this.componentStorage.Router.Push(Page.Playground);
-
-		await base.Execute();
-
-		foreach (var game in this.componentStorage.Games)
+		if (this.componentStorage.Games != null)
 		{
-			if (game.Name == this.componentStorage.UserInput || game.Id == this.componentStorage.UserInput)
+			await base.Execute();
+
+			foreach (var game in this.componentStorage.Games)
 			{
-				this.componentStorage.Game = game;
+				if (game.Name == this.componentStorage.UserInput || game.Id == this.componentStorage.UserInput)
+				{
+					this.componentStorage.Router.Push(Page.Playground);
+					this.componentStorage.Game = game;
+				}
 			}
+		}
+		else
+		{
+			return await base.Execute();
 		}
 
 		return await this.GetComponentResult();

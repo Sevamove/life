@@ -16,14 +16,15 @@ public class Config : IConfig
 
 	// Infrastructure.
 
-	private const string PRD_DB_URL = "./src/Infrastructure/DB/data.json";
-	private const string TST_DB_URL = "../../../../test/Infrastructure/DB/test_data.json"; // CORRECT
-																						   // private const string TST_DB_URL = "../../../../src/Infrastructure/DB/data.json";
+	// NOTE: Do not change the order in the lists until some improvements have been made.
+	private static readonly string[] PRD_DB_URLS = { "./src/Infrastructure/Persistence/data.json", "./src/Infrastructure/Persistence/patterns.json" };
+	private static readonly string[] TST_DB_URLS = { "../../../../test/Infrastructure/Persistence/test_data.json" }; // these are CORRECT paths.
 
-	public static string GetDbUrl() => CURRENT_ENV switch
+	public static string[] GetDbUrls() => CURRENT_ENV switch
 	{
-		Env.PRD => PRD_DB_URL,
-		Env.TST => TST_DB_URL,
+		Env.PRD => PRD_DB_URLS,
+		// Env.ACC => ACC_DB_URLS, // TODO
+		Env.TST => TST_DB_URLS,
 		_ => throw new ArgumentOutOfRangeException()
 	};
 
@@ -54,13 +55,13 @@ public class Config : IConfig
 		return DEAD_CELL_ICON;
 	}
 
-	public static string GetPrdDbUrl()
+	public static string[] GetPrdDbUrls()
 	{
-		return PRD_DB_URL;
+		return PRD_DB_URLS;
 	}
 
-	public static string GetTstDbUrl()
+	public static string[] GetTstDbUrls()
 	{
-		return TST_DB_URL;
+		return TST_DB_URLS;
 	}
 }

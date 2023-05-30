@@ -21,8 +21,6 @@ public class GamesPage : BasePage
 
 	public async override Task<ComponentResult> Execute()
 	{
-		// await this.componentHelper.Execute(ComponentId.GamesStackedList);
-		// this.componentHelper.Render(ComponentId.GamesStackedList);
 		return await this.componentHelper.Execute(ComponentId.GamesStackedList);
 	}
 }

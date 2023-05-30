@@ -1,42 +1,5 @@
 namespace UI.Console.Listeners;
 
-// public class UserInputListener
-// {
-// 	private const int ONE_DAY_IN_SECONDS = 86400;
-
-// 	private string userInput = String.Empty;
-
-// 	public string? Listen(int seconds = ONE_DAY_IN_SECONDS)
-// 	{
-// 		var listenForInputThread = new Thread(listenForInput);
-
-// 		listenForInputThread.Start();
-
-// 		if (listenForInputThread.Join(TimeSpan.FromSeconds(seconds)))
-// 		{
-// 			System.Console.WriteLine("HERERER");
-// 			return userInput;
-// 		}
-// 		else
-// 		{
-// 			System.Console.WriteLine("EMPTTYTYTYTYYTYTY");
-// 			return String.Empty;
-// 		}
-// 	}
-
-// 	public string GetUserInput()
-// 	{
-// 		System.Console.WriteLine("USER INPUT VALUEEEEEEEEEE: " + userInput);
-// 		return this.userInput;
-// 	}
-
-// 	private void listenForInput()
-// 	{
-// 		this.userInput = System.Console.ReadLine();
-// 		System.Console.WriteLine("USER INPUT TTTT : " + this.userInput);
-// 	}
-// }
-
 public class UserInputListener
 {
 	private static Thread inputThread;
@@ -71,7 +34,6 @@ public class UserInputListener
 			return input;
 		else
 			return String.Empty;
-		//throw new TimeoutException("User did not provide input within the timelimit.");
 	}
 
 	public static bool TryReadLine(out string line, int timeOutMillisecs = Timeout.Infinite)
