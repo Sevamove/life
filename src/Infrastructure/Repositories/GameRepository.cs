@@ -11,7 +11,7 @@ public class GameRepository : IRepository<GameEntity>
 
 	public GameRepository()
 	{
-		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrl());
+		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrls());
 	}
 
 	public async Task<GameEntity?> FindByIdAsync<GameEntity>(string id) where GameEntity : BaseEntity
