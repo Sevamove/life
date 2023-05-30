@@ -1,4 +1,3 @@
-using UI.Console.Enums;
 using UI.Console.Interfaces;
 using UI.Console.Types;
 
@@ -15,12 +14,7 @@ public class ComponentStorage : IComponentStorage
 
 	public void ResetComponentStorage()
 	{
-		// TODO: improve and refactor.
-		Router router = new Router();
-		router.Push(Page.NotFound);
-
-		Storage newStorage = new Storage { Router = router };
-		this.storage = newStorage;
+		this.storage.IsAnchorTriggered = false;
 	}
 
 	public void SetComponentStorage(Storage storage)

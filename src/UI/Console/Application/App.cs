@@ -61,7 +61,7 @@ public class App
 				}
 			}
 
-			if (this.localStorage.GetLocalStorage().Router.Pull() == Page.Game_New)
+			if (this.localStorage.GetLocalStorage().Router.Pull() == Page.GameNew)
 			{
 				IPage? pageRef = Searcher.GetPage(ComponentId.GameNewPage, this.pages);
 				pageRef.SetComponentStorage(this.localStorage.GetLocalStorage());

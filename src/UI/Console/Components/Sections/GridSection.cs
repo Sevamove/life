@@ -43,10 +43,19 @@ public class GridSection : BaseSection
 		System.Console.WriteLine();
 	}
 
+	// TODO: refactor.
 	public override async Task<ComponentResult> Execute()
 	{
-		this.componentStorage.Router.Push(Page.Playground);
+		var result = await base.Execute();
 
-		return await base.Execute();
+		if (result.Storage.IsAnchorTriggered)
+		{
+			return result;
+		}
+
+		this.componentStorage.Router.Push(Page.Playground);
+		this.componentStorage.IsAnchorTriggered = true;
+
+		return await this.GetComponentResult();
 	}
 }

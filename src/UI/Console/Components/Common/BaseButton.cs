@@ -1,6 +1,5 @@
 using UI.Console.Enums;
 using UI.Console.Interfaces;
-using UI.Console.Types;
 
 namespace UI.Console.Components.Common;
 

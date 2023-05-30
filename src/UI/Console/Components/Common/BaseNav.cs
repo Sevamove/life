@@ -20,21 +20,6 @@ public abstract class BaseNav : BaseComponent, INav
 
 	public async override Task<ComponentResult> Execute()
 	{
-		// ComponentId componentId = ComponentListener.Listen(this.GetChildComponents());
-		// Storage result = await ComponentHandler.Handle(componentId, this.GetChildComponents());
-		// return await this.componentHelper.Execute(componentId);
-		// string userInput = UserInputListener.Listen();
-
-		// if (UserInputValidator.IsValidNavBarInputValue(userInput))
-		// {
-		// 	// System.Console.WriteLine("NavBar execute");
-		// 	return await Searcher.GetAnchor(userInput).Execute();
-		// }
-
-		// System.Console.WriteLine("Invalid user input in base nav");
-
-		// return new ComponentResult();
-		// throw new ArgumentNullException("Invalid user input");
 		return await this.GetComponentResult();
 	}
 }

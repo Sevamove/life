@@ -18,14 +18,12 @@ public class QuitGameButton : BaseButton
 
 	public override async Task<ComponentResult> Execute()
 	{
+		this.clearConsole();
+
 		System.Console.WriteLine("Quit game button clicked!");
 
-		this.componentStorage.IsGameQuit = true;
 		Environment.Exit(0);
 
-		return new ComponentResult
-		{
-			Storage = this.componentStorage
-		};
+		return await this.GetComponentResult();
 	}
 }

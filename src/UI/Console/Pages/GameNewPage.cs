@@ -21,7 +21,6 @@ public class GameNewPage : BasePage
 
 	public async override Task<ComponentResult> Execute()
 	{
-		// await base.Execute();
 		return await this.componentHelper.Execute(ComponentId.NewGameForm);
 	}
 }

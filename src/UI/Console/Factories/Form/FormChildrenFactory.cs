@@ -1,4 +1,3 @@
-using UI.Console.Factories.Button;
 using UI.Console.Factories.Input;
 using UI.Console.Interfaces;
 
@@ -11,8 +10,7 @@ public static class FormChildrenFactory
 		return new IComponent[] {
 			InputFactory.GetGameNameInput(),
 			InputFactory.GetCellPositionInput(),
-			InputFactory.GetGridAreaInput(),
-			ButtonFactory.GetPostGameButton()
+			InputFactory.GetGridAreaInput()
 		};
 	}
 }

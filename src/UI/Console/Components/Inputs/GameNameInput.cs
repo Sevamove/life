@@ -11,7 +11,7 @@ public class GameNameInput : BaseInputWithLabel
 		ComponentId.GameNameInput,
 		InputChildrenFactory.GetGameNameInputChildren(),
 		"Label: GAME NAME",
-		"Placeholder: What is the name of your new game?")
+		"> Placeholder: What is the name of your new game?")
 	{
 	}
 
