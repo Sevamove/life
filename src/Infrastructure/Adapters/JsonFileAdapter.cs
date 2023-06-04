@@ -3,13 +3,13 @@ using Newtonsoft.Json;
 
 namespace Infrastructure.Adapters
 {
-	public class JsonFileAdapter<T> : IDataStorageAdapter<T>
+	public class JsonFileAdapter<T> : IDataStorageAdapter<T> where T : BaseEntity
 	{
-		private readonly string[] filePaths;
+		private readonly string filePath;
 
-		public JsonFileAdapter(string[] filePaths)
+		public JsonFileAdapter(string filePath)
 		{
-			this.filePaths = filePaths;
+			this.filePath = filePath;
 			this.ValidateFileExists();
 		}
 
@@ -33,7 +33,7 @@ namespace Infrastructure.Adapters
 			string updatedJsonString = this.Serialize(jsonData);
 
 			// Write the serialized JSON back to the file, overwriting the existing content.
-			await File.WriteAllTextAsync(this.filePaths[0], updatedJsonString); // TODO: Let the user choose where to write the data..
+			await File.WriteAllTextAsync(this.filePath, updatedJsonString); // TODO: Let the user choose where to write the data..
 
 			Console.WriteLine("New item(s) added to the JSON file.");
 
@@ -44,50 +44,34 @@ namespace Infrastructure.Adapters
 		{
 			List<T>? result = new List<T>();
 
-			for (int i = 0; i < this.filePaths.Length; i++)
+			string jsonString = await File.ReadAllTextAsync(this.filePath);
+
+			try
 			{
-				string jsonString = await File.ReadAllTextAsync(this.filePaths[i]);
+				List<T>? data = await this.DeserializeAsync(jsonString);
 
-				try
-				{
-					List<T>? data = await this.DeserializeAsync<T>(jsonString);
-
-					if (data != null)
-					{
-						for (int j = 0; j < data.Count; j++)
-						{
-							result.Add(data[j]);
-						}
-					}
-				}
-				catch (Exception error)
-				{
-					Console.WriteLine(error);
-					throw; // Rethrow the exception to observe the details in the debugger
-				}
+				return data;
 			}
-
-			return result;
+			catch (Exception error)
+			{
+				Console.WriteLine(error);
+				throw; // Rethrow the exception to observe the details in the debugger
+			}
 		}
 
-		public async Task<T?> FindByIdAsync<T>(string id) where T : BaseEntity
+		public async Task<T?> FindByIdAsync(string id)
 		{
-			for (int i = 0; i < this.filePaths.Length; i++)
+			string jsonString = await File.ReadAllTextAsync(this.filePath);
+			List<T>? data = await this.DeserializeAsync(jsonString);
+
+			if (data == null)
 			{
-				string jsonString = await File.ReadAllTextAsync(this.filePaths[i]);
-				List<T>? data = await this.DeserializeAsync<T>(jsonString);
-
-				if (data == null)
-				{
-					return default(T);
-				}
-
-				T? item = data.Find(x => x.Id.Equals(id));
-
-				return item;
+				return default(T);
 			}
 
-			return null;
+			T? item = data.Find(x => x.Id.Equals(id));
+
+			return item;
 		}
 
 		internal string Serialize(List<T> data)
@@ -95,20 +79,17 @@ namespace Infrastructure.Adapters
 			return JsonConvert.SerializeObject(data, Formatting.Indented);
 		}
 
-		internal async Task<List<T>?> DeserializeAsync<T>(string json)
+		internal async Task<List<T>?> DeserializeAsync(string json)
 		{
 			return await Task.Run(() => JsonConvert.DeserializeObject<List<T>>(json));
 		}
 
 		private void ValidateFileExists()
 		{
-			for (int i = 0; i < this.filePaths.Length; i++)
+			if (!File.Exists(this.filePath))
 			{
-				if (!File.Exists(this.filePaths[i]))
-				{
-					Console.WriteLine("File not found: " + this.filePaths[i]);
-					throw new FileNotFoundException("File not found: " + this.filePaths[i]);
-				}
+				Console.WriteLine("File not found: " + this.filePath);
+				throw new FileNotFoundException("File not found: " + this.filePath);
 			}
 		}
 	}

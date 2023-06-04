@@ -94,7 +94,7 @@ public class GameControllerTest
 
 	private async Task<bool> clearTestDb()
 	{
-		await File.WriteAllTextAsync(Config.GetTstDbUrls()[0], String.Empty); // TODO: Let the user choose where to write the data.
+		await File.WriteAllTextAsync(Config.GetTstDbUrls()["games"], String.Empty); // TODO: Let the user choose where to write the data.
 
 		return true;
 	}

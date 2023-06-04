@@ -11,12 +11,12 @@ public class GameRepository : IRepository<GameEntity>
 
 	public GameRepository()
 	{
-		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrls());
+		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrls()["games"]);
 	}
 
-	public async Task<GameEntity?> FindByIdAsync<GameEntity>(string id) where GameEntity : BaseEntity
+	public async Task<GameEntity?> FindByIdAsync(string id)
 	{
-		return await this.dbClient.FindByIdAsync<GameEntity>(id);
+		return await this.dbClient.FindByIdAsync(id);
 	}
 
 	public async Task<List<GameEntity>> SaveAllAsync(List<GameEntity> data)

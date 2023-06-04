@@ -33,7 +33,7 @@ public class GameService : IGameService
 
 	public async Task<GameDTO?> GetGame(string id)
 	{
-		GameEntity? game = await this.gameRepository.FindByIdAsync<GameEntity>(id);
+		GameEntity? game = await this.gameRepository.FindByIdAsync(id);
 
 		if (game != null)
 		{
