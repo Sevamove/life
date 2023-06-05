@@ -67,7 +67,7 @@ public class CellTest
 	[InlineData(11)]
 	[InlineData(int.MinValue)]
 	[InlineData(int.MaxValue)]
-	public void SetState_ThrowException(int neighborsAmount)
+	public void SetState_ThrowInvalidNeighborsAmountException(int neighborsAmount)
 	{
 		// Act and Assert.
 
