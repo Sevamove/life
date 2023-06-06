@@ -22,7 +22,8 @@ public class Config : IConfig
 		{ "patterns", "./src/Infrastructure/Persistence/patterns.json" }
 	};
 	private static readonly Dictionary<string, string> TST_DB_URLS = new Dictionary<string, string>() {
-		{ "games", "../../../../test/Infrastructure/Persistence/test_games.json" }
+		{ "games", "../../../../test/Infrastructure/Persistence/test_games.json" },
+		{ "patterns", "../../../../test/Infrastructure/Persistence/test_patterns.json" }
 	};
 
 	public static Dictionary<string, string> GetDbUrls() => CURRENT_ENV switch
