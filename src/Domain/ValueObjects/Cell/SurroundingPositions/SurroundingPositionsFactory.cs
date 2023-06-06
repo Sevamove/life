@@ -2,7 +2,7 @@ using Domain.ValueObjects.Grid;
 
 namespace Domain.ValueObjects.Cell.SurroundingPositions;
 
-public class SurroundingPositionsFactory
+public static class SurroundingPositionsFactory
 {
 	public static ISurroundingPosition[] GetDefaultSurroundingPositions()
 	{

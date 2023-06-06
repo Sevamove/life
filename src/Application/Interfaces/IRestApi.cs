@@ -1,4 +1,4 @@
 namespace Application.Interfaces;
 
-public interface IRestApi : IGameController, IGridController
+public interface IRestApi : IGameController, IGridController, IPatternController
 { }
