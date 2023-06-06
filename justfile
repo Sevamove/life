@@ -9,21 +9,21 @@ default:
     @just --list
 
 pull:
-    just -f ~/justfile switch-to-school-git-config \
+    just -f ~/justfile set-git-school \
     && git pull origin-school development
 
 add *files="":
     git add {{files}}
 
 commit *message="":
-    just -f ~/justfile switch-to-school-git-config \
+    just -f ~/justfile set-git-school \
     && git commit -m "{{message}}" \
-    && just -f ~/justfile switch-to-personal-git-config
+    && just -f ~/justfile set-git-personal 
 
 push branch="development":
-    just -f ~/justfile switch-to-school-git-config \
+    just -f ~/justfile set-git-school \
     && git push -u origin-school {{branch}} \
-    && just -f ~/justfile switch-to-personal-git-config \
+    && just -f ~/justfile set-git-personal \
     && git push -u origin-personal {{branch}}
 
 create-new-gitignore:
