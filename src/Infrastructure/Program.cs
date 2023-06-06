@@ -6,10 +6,10 @@ using Infrastructure.Entities;
 Console.WriteLine("Hello, World!");
 Console.WriteLine(Directory.GetCurrentDirectory());
 
-// var v = new JsonFileAdapter<PatternEntity>(Config.DB_URL);
+// var v = new JsonFileAdapter<GameEntity>(Config.DB_URL);
 // var r = new PatternRepository(v);
 // Console.WriteLine("1");
-// List<PatternEntity> p = new List<PatternEntity>() { new PatternEntity
+// List<GameEntity> p = new List<GameEntity>() { new GameEntity
 // {
 // 	Name = "ff",
 // 	Id = "ss",

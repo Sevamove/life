@@ -1,4 +1,3 @@
-using Application;
 using UI.Console.Components.Common;
 using UI.Console.Enums;
 using UI.Console.Factories.StackedList;
@@ -15,10 +14,21 @@ public class GamesStackedList : BaseStackedList
 	)
 	{ }
 
+	// TODO: refactor.
 	public override async Task LoadResourceDependencies()
 	{
 		await base.LoadResourceDependencies();
-		this.componentStorage.Games = await new RestApi().GetGames();
+		this.componentStorage.Games = await this.restApi.GetGames();
+
+		// TODO: wouldn't it be better to load the patterns with the games from the server at the same time?
+		if (this.componentStorage.Games == null)
+		{
+			this.componentStorage.Games = await this.restApi.GetPatterns();
+		}
+		else
+		{
+			this.componentStorage.Games = this.componentStorage.Games.Concat(await this.restApi.GetPatterns()).ToArray();
+		}
 	}
 
 	public override void Render()
@@ -27,7 +37,7 @@ public class GamesStackedList : BaseStackedList
 
 		if (this.componentStorage.Games == null)
 		{
-			System.Console.WriteLine("! There are no games saved. Create a new game first !");
+			System.Console.WriteLine("! There are no games saved. Create a new game first or choose a pattern !");
 		}
 		else
 		{

@@ -8,6 +8,7 @@ public class Config : IConfig
 	private const Env CURRENT_ENV = Env.PRD;
 
 	// UI.
+
 	private const int FRAMES_PER_SECOND = 1;
 	private const bool SHOULD_CLEAR_CONSOLE_ON_EACH_FRAME = true;
 
@@ -16,11 +17,15 @@ public class Config : IConfig
 
 	// Infrastructure.
 
-	// NOTE: Do not change the order in the lists until some improvements have been made.
-	private static readonly string[] PRD_DB_URLS = { "./src/Infrastructure/Persistence/data.json", "./src/Infrastructure/Persistence/patterns.json" };
-	private static readonly string[] TST_DB_URLS = { "../../../../test/Infrastructure/Persistence/test_data.json" }; // these are CORRECT paths.
+	private static readonly Dictionary<string, string> PRD_DB_URLS = new Dictionary<string, string>() {
+		{ "games", "./src/Infrastructure/Persistence/games.json" },
+		{ "patterns", "./src/Infrastructure/Persistence/patterns.json" }
+	};
+	private static readonly Dictionary<string, string> TST_DB_URLS = new Dictionary<string, string>() {
+		{ "games", "../../../../test/Infrastructure/Persistence/test_games.json" }
+	};
 
-	public static string[] GetDbUrls() => CURRENT_ENV switch
+	public static Dictionary<string, string> GetDbUrls() => CURRENT_ENV switch
 	{
 		Env.PRD => PRD_DB_URLS,
 		// Env.ACC => ACC_DB_URLS, // TODO
@@ -55,12 +60,12 @@ public class Config : IConfig
 		return DEAD_CELL_ICON;
 	}
 
-	public static string[] GetPrdDbUrls()
+	public static Dictionary<string, string> GetPrdDbUrls()
 	{
 		return PRD_DB_URLS;
 	}
 
-	public static string[] GetTstDbUrls()
+	public static Dictionary<string, string> GetTstDbUrls()
 	{
 		return TST_DB_URLS;
 	}

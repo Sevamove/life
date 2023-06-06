@@ -5,7 +5,6 @@ using Application.Services;
 
 namespace Application;
 
-// TODO: Create service class for the controller.
 public class GameController : IGameController
 {
 	private readonly IGameService gameService;

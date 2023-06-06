@@ -5,13 +5,13 @@ using Infrastructure.Interfaces;
 
 namespace Infrastructure.Repositories;
 
-public class GameRepository : IRepository<GameEntity>
+public class PatternRepository : IRepository<GameEntity>
 {
 	private IRepository<GameEntity> dbClient;
 
-	public GameRepository()
+	public PatternRepository()
 	{
-		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrls()["games"]);
+		this.dbClient = new JsonFileAdapter<GameEntity>(Config.GetDbUrls()["patterns"]);
 	}
 
 	public async Task<GameEntity?> FindByIdAsync(string id)

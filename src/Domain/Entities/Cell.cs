@@ -1,3 +1,4 @@
+using Domain.Exceptions;
 using Domain.ValueObjects.Cell;
 
 namespace Domain.Entities;
@@ -32,6 +33,8 @@ public class Cell : ICell
 	/// <inheritdoc /> 
 	public void SetState(int neighborsAmount)
 	{
+		this.validateNeighborsAmount(neighborsAmount);
+
 		if (this.shouldLive(neighborsAmount) || this.shouldBorn(neighborsAmount))
 		{
 			this.state = State.LIVE;
@@ -88,6 +91,17 @@ public class Cell : ICell
 	public override int GetHashCode()
 	{
 		throw new NotImplementedException();
+	}
+
+	private void validateNeighborsAmount(int neighborsAmount)
+	{
+		int minimumNeighborsAmountAllowed = 0;
+		int maximumNeighborsAmountAllowed = 8;
+
+		if (neighborsAmount < minimumNeighborsAmountAllowed || neighborsAmount > maximumNeighborsAmountAllowed)
+		{
+			throw new InvalidNeighborsAmountException();
+		}
 	}
 
 	/// TODO

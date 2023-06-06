@@ -1,6 +1,6 @@
 namespace UI.Console.Listeners;
 
-public class UserInputListener
+public static class UserInputListener
 {
 	private static Thread inputThread;
 	private static AutoResetEvent getInput, gotInput;

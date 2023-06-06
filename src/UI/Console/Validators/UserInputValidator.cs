@@ -73,7 +73,7 @@ public class UserInputValidator
 		return true;
 	}
 
-	// NOTE: The correct form at the moment: WIDTH-HEIGHT (e.g. 20-20).
+	// NOTE: The correct form at the moment: WIDTH-HEIGHT (e.g. 20-20). (20-20)
 	// TODO: improve. Will fail acceptatietest.
 	public static bool IsValidGridAreaInputValue(string inputValue)
 	{
