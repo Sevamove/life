@@ -10,7 +10,8 @@ public static class FormChildrenFactory
 		return new IComponent[] {
 			InputFactory.GetGameNameInput(),
 			InputFactory.GetCellPositionInput(),
-			InputFactory.GetGridAreaInput()
+			InputFactory.GetGridAreaInput(),
+			InputFactory.GetMoreCellsInput()
 		};
 	}
 }

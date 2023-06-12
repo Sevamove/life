@@ -20,7 +20,13 @@ public static class UserInputListener
 		while (true)
 		{
 			getInput.WaitOne();
+
+			System.Console.Write("\n" + "> ");
+
 			input = System.Console.ReadLine();
+
+			System.Console.WriteLine();
+
 			gotInput.Set();
 		}
 	}

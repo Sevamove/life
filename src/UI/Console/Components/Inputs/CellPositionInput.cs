@@ -10,8 +10,8 @@ public class CellPositionInput : BaseInputWithLabel
 	public CellPositionInput() : base(
 		ComponentId.CellPositionInput,
 		InputChildrenFactory.GetCellPositionInputChildren(),
-		"Label: CELL POSITION",
-		"> Placeholder: Provide a cell position in the next form ROW-COLUMN (e.g. 10-12)")
+		"CELL POSITION",
+		"Provide a cell position in the next form ROW-COLUMN (e.g. 10-12)")
 	{
 	}
 

@@ -38,12 +38,14 @@ public class Cell : ICell
 		if (this.shouldLive(neighborsAmount) || this.shouldBorn(neighborsAmount))
 		{
 			this.state = State.LIVE;
+			return;
 		}
 
-		if (this.shouldDie(neighborsAmount))
-		{
-			this.state = State.DEAD;
-		}
+		// if (this.shouldDie(neighborsAmount))
+		// {
+		// 	this.state = State.DEAD;
+		// }
+		this.state = State.DEAD;
 	}
 
 	/// <inheritdoc /> 

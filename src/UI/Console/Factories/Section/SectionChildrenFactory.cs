@@ -6,9 +6,6 @@ public static class SectionChildrenFactory
 {
 	public static IComponent[] GetGridSectionChildren()
 	{
-		return new IComponent[] {
-			// new PlayGameButton(restApi),
-			// new PauseGameButton()
-		};
+		return new IComponent[] { };
 	}
 }

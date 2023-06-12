@@ -9,6 +9,15 @@ public class Config : IConfig
 
 	// UI.
 
+	private const string GAME_OF_LIFE_ASCII_ART = @"
+ ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ███████╗    ██╗     ██╗███████╗███████╗
+██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██╔════╝    ██║     ██║██╔════╝██╔════╝
+██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║█████╗      ██║     ██║█████╗  █████╗  
+██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║██╔══╝      ██║     ██║██╔══╝  ██╔══╝  
+╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝██║         ███████╗██║██║     ███████╗
+ ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝ ╚═╝         ╚══════╝╚═╝╚═╝     ╚══════╝
+";
+
 	private const int FRAMES_PER_SECOND = 1;
 	private const bool SHOULD_CLEAR_CONSOLE_ON_EACH_FRAME = true;
 
@@ -59,6 +68,11 @@ public class Config : IConfig
 	public static string GetDeadCellIcon()
 	{
 		return DEAD_CELL_ICON;
+	}
+
+	public static string GetGameOfLifeAsciiArt()
+	{
+		return GAME_OF_LIFE_ASCII_ART;
 	}
 
 	public static Dictionary<string, string> GetPrdDbUrls()

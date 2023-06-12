@@ -18,4 +18,9 @@ public static class InputChildrenFactory
 	{
 		return new IComponent[] { };
 	}
+
+	public static IComponent[] GetMoreCellsInputChildren()
+	{
+		return new IComponent[] { };
+	}
 }

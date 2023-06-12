@@ -10,6 +10,7 @@ public interface IConfig
 	static abstract Dictionary<string, string> GetDbUrls();
 	static abstract string GetLiveCellIcon();
 	static abstract string GetDeadCellIcon();
+	static abstract string GetGameOfLifeAsciiArt();
 	static abstract Dictionary<string, string> GetTstDbUrls();
 	static abstract Dictionary<string, string> GetPrdDbUrls();
 }

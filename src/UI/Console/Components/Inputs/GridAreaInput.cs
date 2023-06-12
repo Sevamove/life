@@ -10,8 +10,8 @@ public class GridAreaInput : BaseInputWithLabel
 	public GridAreaInput() : base(
 		ComponentId.GridAreaInput,
 		InputChildrenFactory.GetGridAreaInputChildren(),
-		"Label: GRID AREA",
-		"> Placeholder: Provide the grid area in the next form WIDTH-HEIGHT (minimum 20-20)")
+		"GRID AREA",
+		"Provide the grid area in the next form WIDTH-HEIGHT (minimum 20-20)")
 	{
 	}
 

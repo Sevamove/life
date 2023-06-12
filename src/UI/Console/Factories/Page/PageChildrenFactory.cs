@@ -1,4 +1,5 @@
 using UI.Console.Components.Forms;
+using UI.Console.Components.Headers;
 using UI.Console.Components.NavBars;
 using UI.Console.Components.Sections;
 using UI.Console.Components.StackedLists;
@@ -11,6 +12,7 @@ public static class PageChildrenFactory
 	public static IComponent[] GetHomePageChildren()
 	{
 		return new IComponent[] {
+			new MainHeader(),
 			new HomeNavBar()
 		};
 	}
@@ -18,6 +20,7 @@ public static class PageChildrenFactory
 	public static IComponent[] GetGamesPageChildren()
 	{
 		return new IComponent[] {
+			new MainHeader(),
 			new GamesNavBar(),
 			new GamesStackedList()
 		};
@@ -26,6 +29,7 @@ public static class PageChildrenFactory
 	public static IComponent[] GetPlaygroundPageChildren()
 	{
 		return new IComponent[] {
+			new MainHeader(),
 			new PlaygroundNavBar(),
 			new GridSection()
 		};
@@ -34,6 +38,7 @@ public static class PageChildrenFactory
 	public static IComponent[] GetGameNewPageChildren()
 	{
 		return new IComponent[] {
+			new MainHeader(),
 			new GameNewNavBar(),
 			new NewGameForm(),
 		};

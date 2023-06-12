@@ -100,4 +100,14 @@ public class UserInputValidator
 
 		return false;
 	}
+
+	public static bool IsValidMoreCellsInputValue(string inputValue)
+	{
+		if (inputValue == "y" || inputValue == "n")
+		{
+			return true;
+		}
+
+		return false;
+	}
 }

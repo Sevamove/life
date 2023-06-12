@@ -23,6 +23,7 @@ public enum ComponentId
 	GameNameInput,
 	CellPositionInput,
 	GridAreaInput,
+	MoreCellsInput,
 	// Pages are a components here.
 	HomePage,
 	GameNewPage,
@@ -38,5 +39,9 @@ public enum ComponentId
 	// Lists.
 	GamesStackedList,
 	// Sections.
-	GridSection
+	GridSection,
+	// Headers.
+	MainHeader,
+	// Images.
+	GameOfLifeLogoImage
 }

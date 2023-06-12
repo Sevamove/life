@@ -42,14 +42,22 @@ public class NewGameForm : BaseForm
 		{
 			this.componentHelper.Render(ComponentId.CellPositionInput);
 			ComponentResult cellPositionResult = await this.componentHelper.Execute(ComponentId.CellPositionInput);
-			System.Console.WriteLine(cellPositionResult.Storage.UserInput);
 
 			cells.Add(cellPositionResult.Storage.UserInput);
 
-			System.Console.WriteLine("Would you like to add more cell positions? (y)es or (n)o");
-			string more = System.Console.ReadLine();
+			// System.Console.WriteLine("Would you like to add more cell positions? (y)es or (n)o");
+			// string more = System.Console.ReadLine();
 
-			if (more.Equals("n"))
+			this.componentHelper.Render(ComponentId.MoreCellsInput);
+			var moreCellsResult = await this.componentHelper.Execute(ComponentId.MoreCellsInput);
+			string moreCellsString = (string)moreCellsResult.Storage.UserInput.Clone();
+
+			if (moreCellsResult.Storage.IsAnchorTriggered)
+			{
+				return moreCellsResult;
+			}
+
+			if (moreCellsString.Equals("n"))
 			{
 				break;
 			}
@@ -74,6 +82,6 @@ public class NewGameForm : BaseForm
 
 	public override void Render()
 	{
-		System.Console.WriteLine("# New Game Form");
+		System.Console.WriteLine("\n" + "# New Game Form" + "\n");
 	}
 }

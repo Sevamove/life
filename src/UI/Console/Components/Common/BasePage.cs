@@ -14,6 +14,7 @@ public abstract class BasePage : BaseComponent, IPage
 		this.updateComponentStorages();
 		this.clearConsole();
 
+		this.componentHelper.Render(ComponentId.MainHeader);
 		this.componentHelper.Render(ElementId.Nav);
 	}
 }

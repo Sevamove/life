@@ -80,7 +80,6 @@ public abstract class BaseComponent : BaseElement, IComponent
 			}
 
 			System.Console.WriteLine("! You have provided unsupported input. Try again !");
-			System.Console.WriteLine("> ");
 		}
 	}
 

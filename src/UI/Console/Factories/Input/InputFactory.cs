@@ -10,7 +10,8 @@ public static class InputFactory
 		return new IComponent[] {
 			GetGameNameInput(),
 			GetGridAreaInput(),
-			GetCellPositionInput()
+			GetCellPositionInput(),
+			GetMoreCellsInput()
 		};
 	}
 
@@ -27,5 +28,10 @@ public static class InputFactory
 	public static IComponent GetCellPositionInput()
 	{
 		return new CellPositionInput();
+	}
+
+	public static IInput GetMoreCellsInput()
+	{
+		return new MoreCellsInput();
 	}
 }

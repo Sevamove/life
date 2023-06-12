@@ -9,5 +9,7 @@ public enum ElementId
 	Form,
 	Section,
 	List, // <li>
-	Main // It is recommended to have only one <main> element per page.
+	Main, // It is recommended to have only one <main> element per page.
+	Header,
+	Img
 }

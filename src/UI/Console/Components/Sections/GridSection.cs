@@ -28,6 +28,8 @@ public class GridSection : BaseSection
 		GameDTO game = this.componentStorage.Game;
 		AreaDTO area = game.Grid.Area;
 
+		System.Console.WriteLine();
+
 		for (int x = 0; x < area.Width; x++)
 		{
 			for (int y = 0; y < area.Height; y++)

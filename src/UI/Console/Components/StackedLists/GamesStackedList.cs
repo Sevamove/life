@@ -49,7 +49,7 @@ public class GamesStackedList : BaseStackedList
 				System.Console.WriteLine("Grid Height: " + game.Grid.Area.Height);
 				System.Console.WriteLine();
 			}
-			System.Console.Write("> Choose a game and type the name: ");
+			System.Console.Write("Choose a game and type the name: ");
 		}
 	}
 
